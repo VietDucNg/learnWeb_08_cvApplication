@@ -1,4 +1,15 @@
 .logo-div {
     color: var(--main-color);
     font-weight: bold;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 5px;
+}
+
+.logo-icon {
+    background-color: var(--main-color);
+    color: black;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 1.5rem;
 }
