@@ -1,0 +1,9 @@
+.export-btn {
+    color: white;
+    font-weight: 500;
+    background-color: var(--main-color);
+    padding: 5px 10px;
+    border-radius: 10px;
+    flex-wrap: nowrap;
+    gap: 5px;
+}
