@@ -1,0 +1,89 @@
+:root {
+  --font-size-base: clamp(14px, 0.4vw + 1rem, 18px);
+  --font-color: #222;
+  --space: 1lh;
+  --font-family-base: system-ui, "Segoe UI", Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans",  Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol","Noto Color Emoji";
+}
+
+.grid-column {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.grid-row {
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-base);
+  color: var(--font-color);
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 1.5vw + 1.5rem, 3.2rem);
+}
+
+h2 {
+  font-size: clamp(1.8rem, 1.2vw + 1.2rem, 2.6rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 1vw + 1rem, 2.2rem);
+}
+
+h4 {
+  font-size: clamp(1.3rem, 0.8vw + 0.9rem, 1.8rem);
+}
+
+h5 {
+  font-size: clamp(1.1rem, 0.5vw + 0.8rem, 1.4rem);
+}
+
+h6 {
+  font-size: clamp(1rem, 0.3vw + 0.75rem, 1.2rem);
+}
+
+p {
+  font-size: 1rem;
+  max-width: 70ch;
+}
+
+article {
+  max-width: 70ch;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover, .active {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.98);
+}
