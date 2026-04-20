@@ -4,7 +4,7 @@ import '../styles/ExportBtn.css'
 export default function ExportBtn() {
     return (
         <button className="export-btn flex-row">
-            <MdOutlineFileDownload />  Export PDF
+            <MdOutlineFileDownload /> Export PDF
         </button>
     )
 }
