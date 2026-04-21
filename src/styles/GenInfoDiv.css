@@ -1,0 +1,10 @@
+.GenInfoDiv {
+    background-color: var(--section-background-color);
+    padding: var(--section-padding);
+    border-radius: 15px;
+}
+
+.GenInfoDiv h5 {
+    padding: 10px;
+    border-bottom: 1px solid var(--line-break-color);
+}
