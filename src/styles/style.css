@@ -1,6 +1,6 @@
 :root {
   --font-size-base: clamp(14px, 0.4vw + 1rem, 18px);
-  --font-color: #222;
+  --font-color: white;
   --space: 1lh;
   --font-family-base: system-ui, "Segoe UI", Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans",  Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol","Noto Color Emoji";
   --main-color: rgba(61, 122, 245);
