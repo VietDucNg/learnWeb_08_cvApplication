@@ -16,6 +16,7 @@ export default function GenInfoForm() {
         e.currentTarget.querySelector("input")?.focus();
     }
 
+    // remove focus when click outside
     useEffect(() => {
         const handleClickOutside = (e) => {
             if (!formRef.current.contains(e.target)) {
@@ -29,7 +30,7 @@ export default function GenInfoForm() {
     return (
         <form ref={formRef} className="genInfo-form grid-row">
 
-            <section className="nameInput-div flex-column">
+            <section className="field-div flex-column">
                 <label htmlFor="name-input"> Full Name</label>
                 <div className={`input-div flex-row ${focused === "name" ? "focus" : ""}`} onClick={(e) => setFocus(e, "name")} >
                     <IoPersonOutline />
@@ -37,7 +38,7 @@ export default function GenInfoForm() {
                 </div>
             </section>
 
-            <section className="emailInput-div flex-column">
+            <section className="field-div flex-column">
                 <label htmlFor="email-input">Email Address</label>
                 <div className={`input-div flex-row ${focused === "email" ? "focus" : ""}`} onClick={(e) => setFocus(e,"email")}>
                     <MdOutlineEmail />
@@ -45,7 +46,7 @@ export default function GenInfoForm() {
                 </div>
             </section>
 
-            <section className="phoneInput-div flex-column">
+            <section className="field-div flex-column">
                 <label htmlFor="phone-input">Phone Number</label>
                 <div className={`input-div flex-row ${focused === "phone" ? "focus" : ""}`} onClick={(e) => setFocus(e,"phone")}>
                     <FiPhone />
@@ -53,7 +54,7 @@ export default function GenInfoForm() {
                 </div>
             </section>
 
-            <section className="locationInput-div flex-column">
+            <section className="field-div flex-column">
                 <label htmlFor="location-input">Location</label>
                 <div className={`input-div flex-row ${focused === "location" ? "focus" : ""}`} onClick={(e) => setFocus(e, "location")}>
                     <IoLocationOutline />
