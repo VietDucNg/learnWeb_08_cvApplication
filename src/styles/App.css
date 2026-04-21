@@ -1,3 +1,22 @@
 .app-div {
     padding: 10px 20px;
 }
+
+main {
+    padding: 20px 0;
+}
+
+.input-div {
+    background-color: var(--input-background-color);
+    padding: 10px;
+    border-radius: 5px;
+    gap: 5px;
+    flex-wrap: nowrap;
+}
+
+.input-div input {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+}

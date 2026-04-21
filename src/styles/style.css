@@ -5,6 +5,9 @@
   --font-family-base: system-ui, "Segoe UI", Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans",  Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol","Noto Color Emoji";
   --main-color: rgba(61, 122, 245);
   --line-break-color: rgb(54, 56, 60);
+  --section-background-color: rgba(30, 33, 40);
+  --section-padding: 10px 20px;
+  --input-background-color: rgb(46, 50, 59);
 }
 
 .grid-column {
