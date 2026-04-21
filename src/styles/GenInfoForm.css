@@ -1,5 +1,13 @@
-.gen-info-form {
+.genInfo-form {
     grid-template-columns: repeat(auto-fit, minmax(max(250px,45%),1fr));
     gap: 10px;
     margin: 20px 0;
+}
+
+.genInfo-form .input-div {
+    margin-top: 5px;
+}
+
+.genInfo-form .focus {
+    border: 1px solid var(--main-color);
 }
