@@ -55,7 +55,7 @@ export default function GenInfoForm() {
 
             <section className="locationInput-div flex-column">
                 <label htmlFor="location-input">Location</label>
-                <div className={`input-div flex-row ${focused === "location" ? "focus" : ""}`} onClick={(e) => setFocused(e, "location")}>
+                <div className={`input-div flex-row ${focused === "location" ? "focus" : ""}`} onClick={(e) => setFocus(e, "location")}>
                     <IoLocationOutline />
                     <input type="text" id="location-input" placeholder="Greifswald, Germany"/>
                 </div>
