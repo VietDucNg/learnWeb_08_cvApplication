@@ -1,10 +1,10 @@
 import { IoDocumentTextOutline } from "react-icons/io5";
-import '../styles/Logo.css'
+import "../styles/Logo.css";
 
 export default function Logo() {
-    return (
-        <div className="logo-div flex-row">
-            <IoDocumentTextOutline className="logo-icon"/> CV Builder
-        </div>
-    )
+  return (
+    <div className="logo-div flex-row">
+      <IoDocumentTextOutline className="logo-icon" /> CV Builder
+    </div>
+  );
 }
