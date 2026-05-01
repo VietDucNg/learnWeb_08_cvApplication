@@ -72,9 +72,15 @@ export default function GenInfoForm() {
   // address photon autocomplete
   const [addressSuggestions, setAddressSuggestions] = useState([]);
   const [showAddressSuggestions, setShowAddressSuggestions] = useState(false);
+  const [isSelecting, setIsSelecting] = useState(false);
   const locationValue = watch("location");
 
   useEffect(() => {
+    if (isSelecting) {
+      setIsSelecting(false);
+      return;
+    }
+
     if (!locationValue || locationValue.length < 3) {
       setAddressSuggestions([]);
       return;
@@ -106,7 +112,7 @@ export default function GenInfoForm() {
 
   function selectLocation(item) {
     const value = `${item.label || ""}, ${item.city || ""}, ${item.country || ""}`;
-
+    setIsSelecting(true);
     setValue("location", value, { shouldValidate: true });
     setShowAddressSuggestions(false);
   }
