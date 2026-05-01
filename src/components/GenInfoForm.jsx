@@ -4,12 +4,15 @@ import { MdOutlineEmail } from "react-icons/md";
 import { FiPhone } from "react-icons/fi";
 import { IoLocationOutline } from "react-icons/io5";
 import { useState, useRef, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { isValidPhoneNumber } from "libphonenumber-js";
+import isEmail from 'validator/lib/isEmail';
 
-const NAME_REGEX = /^[\p{L}][\p{L} '-]{1,29}$/u;
-const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const NAME_REGEX = /^[\p{L}][\p{L} '-]{1,50}$/u;
 
 export default function GenInfoForm() {
-  // // deal with focus style for input-div
+
+  // deal with focus style for input-div
   const [focused, setFocused] = useState(null);
   const formRef = useRef(null);
 
@@ -29,101 +32,37 @@ export default function GenInfoForm() {
   }, []);
 
   // validation
-  const [values, setValues] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
-  const [errors, setErrors] = useState({});
+  const {register, handleSubmit, watch, formState:{errors} } = useForm({mode:'onChange'});
 
-  function handleChange(e) {
-    const { name, value } = e.target;
-
-    setValues((oldState) => ({
-      ...oldState,
-      [name]: value,
-    }));
-
-    validateField(name, value);
+  const registerOptions = {
+    name: {required: '*This field is required',
+      minLength: {
+        value: 2,
+        message: 'Name is too short'
+      },
+      maxLength: {
+        value: 50,
+        message: 'Name is too long',
+      },
+      pattern: {
+        value: NAME_REGEX,
+        message: 'Enter a valid name',
+      }
+    },
+    email: {required: '*This field is required',
+      validate: (value) => isEmail(value) || 'Enter a valid email',
+    },
+    phone: {validate: (value) => !value || isValidPhoneNumber(value, 'DE') || 'Invalid phone number'}
   }
 
-  function validateField(name, value) {
-    let error = "";
-
-    if (!value.trim()) {
-      error = "*This field is required";
-    } else {
-      switch (name) {
-        case "name":
-          if (!NAME_REGEX.test(value)) {
-            error = "Enter a valid name";
-          }
-          break;
-
-        case "email":
-          if (!EMAIL_REGEX.test(value)) {
-            error = "Enter a valid email";
-          }
-          break;
-
-        case "phone":
-          const digits = value.replace(/\+/g, "");
-
-          if (!value.match(/^\+?\d+$/)) {
-            error = "Phone number can only contain digits, or start with +";
-          } else if (digits.length < 8 || digits.length > 15) {
-            error = "Phone number must be 8-15 digits";
-          } else if (value.startsWith("+")) {
-            if (!value.match(/^\+\d/)) {
-              error = "Number cannot end with +. It must be followed by digits";
-            } else if (value.match(/^\+0/)) {
-              error =
-                "When using international format (+), the first digit cannot be 0";
-            }
-          } else if (!value.match(/^0/)) {
-            error = "Local numbers must start with 0";
-          }
-          break;
-      }
-    }
-
-    setErrors((oldState) => ({
-      ...oldState,
-      [name]: error,
-    }));
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    let newErrors = {};
-
-    Object.keys(values).forEach((key) => {
-      const value = values[key];
-      let error = "";
-
-      if (!value.trim()) {
-        error = "*This field is required";
-      }
-
-      // (you can reuse your switch logic here)
-
-      newErrors[key] = error;
-    });
-
-    setErrors(newErrors);
-
-    const hasError = Object.values(newErrors).some((err) => err);
-
-    if (!hasError) {
-      console.log("Form is valid", values);
-    }
+  function submitFunc(data) {
+    console.log(data)
   }
 
   return (
     <form
       ref={formRef}
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(submitFunc)}
       className="genInfo-form grid-row"
     >
       <section className="field-div flex-column">
@@ -131,7 +70,7 @@ export default function GenInfoForm() {
         <div
           className={`input-div flex-row 
                 ${focused === "name" ? "focus" : ""}
-                ${errors.name ? "invalid" : values.name ? "valid" : ""}`}
+                ${errors.name ? "invalid" : watch('name') ? "valid" : ""}`}
           onClick={(e) => setFocus(e, "name")}
         >
           <IoPersonOutline />
@@ -140,12 +79,10 @@ export default function GenInfoForm() {
             id="name-input"
             placeholder="Viet Nguyen"
             name="name"
-            value={values.name}
-            onChange={handleChange}
-            required
+            {...register('name', registerOptions.name)}
           />
         </div>
-        <small className="error">{errors.name}</small>
+        <small className="error">{errors.name?.message}</small>
       </section>
 
       <section className="field-div flex-column">
@@ -153,7 +90,7 @@ export default function GenInfoForm() {
         <div
           className={`input-div flex-row 
                     ${focused === "email" ? "focus" : ""}
-                    ${errors.email ? "invalid" : values.email ? "valid" : ""}`}
+                    ${errors.email ? "invalid" : watch('email') ? "valid" : ""}`}
           onClick={(e) => setFocus(e, "email")}
         >
           <MdOutlineEmail />
@@ -162,12 +99,10 @@ export default function GenInfoForm() {
             id="email-input"
             placeholder="viet.nguyen@webdev.com"
             name="email"
-            value={values.email}
-            onChange={handleChange}
-            required
+            {...register('email',registerOptions.email)}
           />
         </div>
-        <small className="error">{errors.email}</small>
+        <small className="error">{errors.email?.message}</small>
       </section>
 
       <section className="field-div flex-column">
@@ -175,20 +110,19 @@ export default function GenInfoForm() {
         <div
           className={`input-div flex-row 
                     ${focused === "phone" ? "focus" : ""}
-                    ${errors.phone ? "invalid" : values.phone ? "valid" : ""}`}
+                    ${errors.phone ? "invalid" : watch('phone') ? "valid" : ""}`}
           onClick={(e) => setFocus(e, "phone")}
         >
           <FiPhone />
           <input
             type="text"
             id="phone-input"
-            placeholder="(+49) 123 456 7890"
+            placeholder="+49 123 456 7890"
             name="phone"
-            value={values.phone}
-            onChange={handleChange}
+            {...register('phone', registerOptions.phone)}
           />
         </div>
-        <small className="error">{errors.phone}</small>
+        <small className="error">{errors.phone?.message}</small>
       </section>
 
       <section className="field-div flex-column">
