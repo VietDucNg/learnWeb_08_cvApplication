@@ -13,17 +13,23 @@ const NAME_REGEX = /^[\p{L}][\p{L} '-]{1,50}$/u;
 export default function GenInfoForm() {
   // deal with focus style for input-div
   const [focused, setFocused] = useState(null);
-  const formRef = useRef(null);
 
   function setFocus(e, input) {
     setFocused(input);
     e.currentTarget.querySelector("input")?.focus();
   }
 
+  // hide things on outside click
+  const formRef = useRef(null);
+  const locationInputRef = useRef(null);
+
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (!formRef.current.contains(e.target)) {
+      if (!formRef.current?.contains(e.target)) {
         setFocused(null);
+      }
+
+      if (!locationInputRef.current?.contains(e.target)) {
         setShowAddressSuggestions(false);
       }
     };
@@ -187,6 +193,7 @@ export default function GenInfoForm() {
       <section className="location-field-div field-div flex-column">
         <label htmlFor="location-input">Location</label>
         <div
+          ref={locationInputRef}
           className={`input-div flex-row ${focused === "location" ? "focus" : ""}`}
           onClick={(e) => setFocus(e, "location")}
         >
