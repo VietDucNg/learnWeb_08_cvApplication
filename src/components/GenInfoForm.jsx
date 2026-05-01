@@ -24,6 +24,7 @@ export default function GenInfoForm() {
     const handleClickOutside = (e) => {
       if (!formRef.current.contains(e.target)) {
         setFocused(null);
+        setShowAddressSuggestions(false);
       }
     };
     document.addEventListener("click", handleClickOutside);
