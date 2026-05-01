@@ -1,5 +1,5 @@
 import GenInfoForm from "./GenInfoForm";
-import "../styles/GenInfoDiv.css";
+import "../../styles/GenInfoDiv.css";
 
 export default function GenInfoDiv() {
   return (
