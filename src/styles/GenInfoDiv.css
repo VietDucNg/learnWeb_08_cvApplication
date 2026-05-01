@@ -1,10 +1,32 @@
 .GenInfoDiv {
-    background-color: var(--section-background-color);
-    padding: var(--section-padding);
-    border-radius: 15px;
+  background-color: var(--section-background-color);
+  padding: var(--section-padding);
+  border-radius: 15px;
 }
 
 .GenInfoDiv h5 {
-    padding: 10px;
-    border-bottom: 1px solid var(--line-break-color);
+  padding: 10px;
+  border-bottom: 1px solid var(--line-break-color);
+}
+
+.location-field-div {
+  position: relative;
+}
+
+.addressSuggestions {
+  background: var(--section-background-color);
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  list-style: none;
+  top: calc(100% - 20px);
+  border-radius: 10px;
+}
+
+.addressSuggestions li {
+  padding: 10px;
+}
+
+.addressSuggestions li:hover {
+  background: var(--input-background-color);
 }
