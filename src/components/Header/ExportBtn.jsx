@@ -1,5 +1,5 @@
 import { MdOutlineFileDownload } from "react-icons/md";
-import "../../styles/ExportBtn.css";
+import "./ExportBtn.css";
 import Button from "@mui/material/Button";
 
 export default function ExportBtn() {

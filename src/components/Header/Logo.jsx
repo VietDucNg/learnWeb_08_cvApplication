@@ -1,5 +1,5 @@
 import { IoDocumentTextOutline } from "react-icons/io5";
-import "../../styles/Logo.css";
+import "./Logo.css";
 
 export default function Logo() {
   return (

@@ -7,6 +7,7 @@
     "Droid Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --main-color: rgba(61, 122, 245);
+  --main-color-background: rgba(61, 122, 245, 0.1);
   --line-break-color: rgb(54, 56, 60);
   --section-background-color: rgba(30, 33, 40);
   --section-padding: 10px 20px;
