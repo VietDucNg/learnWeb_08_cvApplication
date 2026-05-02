@@ -18,12 +18,13 @@ export default function GenInfoForm() {
   // unfocus on outside click
   const formRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (!formRef.current?.contains(e.target)) {
-        setFocused(null);
-      }
-    };
+  function handleClickOutside(e) {
+    if (!formRef.current?.contains(e.target)) {
+      setFocused(null);
+    }
+  }
+
+  useEffect(function () {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);

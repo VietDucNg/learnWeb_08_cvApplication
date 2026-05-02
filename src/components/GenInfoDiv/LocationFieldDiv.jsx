@@ -60,12 +60,13 @@ export default function LocationFieldDiv({
   //   hide address suggestions on outside click
   const locationInputRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (!locationInputRef.current?.contains(e.target)) {
-        setShowAddressSuggestions(false);
-      }
-    };
+  const handleClickOutside = (e) => {
+    if (!locationInputRef.current?.contains(e.target)) {
+      setShowAddressSuggestions(false);
+    }
+  };
+
+  useEffect(function () {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
