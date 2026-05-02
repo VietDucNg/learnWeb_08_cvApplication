@@ -1,6 +1,6 @@
 import Logo from "./Logo";
 import ExportBtn from "./ExportBtn";
-import "../styles/Header.css";
+import "../../styles/Header.css";
 
 function Header() {
   return (

@@ -1,4 +1,4 @@
-.export-btn {
+.header .export-btn {
   background-color: var(--main-color);
   flex-wrap: nowrap;
   gap: 5px;
