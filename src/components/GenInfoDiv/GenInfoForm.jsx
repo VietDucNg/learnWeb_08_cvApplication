@@ -5,6 +5,7 @@ import NameFieldDiv from "./NameFieldDiv";
 import EmailFieldDiv from "./EmailFieldDiv";
 import PhoneFieldDiv from "./PhoneFieldDiv";
 import LocationFieldDiv from "./LocationFieldDiv";
+import TitleFieldDiv from "./TitleFieldDiv";
 import SaveBtn from "./SaveBtn";
 
 export default function GenInfoForm() {
@@ -77,6 +78,11 @@ export default function GenInfoForm() {
           setFocus={setFocus}
           watch={watch}
           setValue={setValue}
+          register={register}
+        />
+        <TitleFieldDiv
+          focused={focused}
+          setFocus={setFocus}
           register={register}
         />
       </form>
