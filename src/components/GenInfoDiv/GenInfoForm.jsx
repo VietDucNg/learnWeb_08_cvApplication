@@ -8,7 +8,7 @@ import LocationFieldDiv from "./LocationFieldDiv";
 import TitleFieldDiv from "./TitleFieldDiv";
 import SaveBtn from "./SaveBtn";
 
-export default function GenInfoForm() {
+export default function GenInfoForm({ setInfoData }) {
   // focus style for input-div
   const [focused, setFocused] = useState(null);
 
@@ -40,8 +40,9 @@ export default function GenInfoForm() {
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
+  // send infoData to App
   function submitFunc(data) {
-    console.log(data);
+    setInfoData(data);
   }
 
   return (

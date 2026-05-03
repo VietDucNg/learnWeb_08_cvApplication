@@ -1,10 +1,10 @@
 import CVheader from "./CVheader";
 import "./LiveCV.css";
 
-export default function LiveCV() {
+export default function LiveCV({ infoData }) {
   return (
     <section className="liveCV">
-      <CVheader />
+      <CVheader infoData={infoData} />
     </section>
   );
 }
