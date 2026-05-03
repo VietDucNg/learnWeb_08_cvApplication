@@ -7,10 +7,8 @@ import PhoneFieldDiv from "./PhoneFieldDiv";
 import LocationFieldDiv from "./LocationFieldDiv";
 import TitleFieldDiv from "./TitleFieldDiv";
 import SaveBtn from "./SaveBtn";
-import clearBtn from "../utils/ClearBtn";
-import ClearBtn from "../utils/ClearBtn";
 
-export default function GenInfoForm({ setInfoData }) {
+export default function GenInfoForm({ setResetForm, setInfoData }) {
   // focus style for input-div
   const [focused, setFocused] = useState(null);
 
@@ -48,9 +46,14 @@ export default function GenInfoForm({ setInfoData }) {
     setInfoData(data);
   }
 
-  function clearAll() {
-    reset();
-  }
+  // send clear all function to App
+
+  useEffect(
+    function () {
+      setResetForm(() => reset);
+    },
+    [reset],
+  );
 
   return (
     <>
@@ -94,10 +97,7 @@ export default function GenInfoForm({ setInfoData }) {
           register={register}
         />
       </form>
-      <div className="form-bottom flex-row">
-        <ClearBtn onClick={clearAll} />
-        <SaveBtn />
-      </div>
+      <SaveBtn />
     </>
   );
 }

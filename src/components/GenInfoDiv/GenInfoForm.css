@@ -38,7 +38,3 @@
 .genInfo-form .field-div:last-child {
   grid-column: 1 / -1;
 }
-
-.form-bottom {
-  gap: 10px;
-}
