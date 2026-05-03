@@ -7,6 +7,8 @@ import PhoneFieldDiv from "./PhoneFieldDiv";
 import LocationFieldDiv from "./LocationFieldDiv";
 import TitleFieldDiv from "./TitleFieldDiv";
 import SaveBtn from "./SaveBtn";
+import clearBtn from "../utils/ClearBtn";
+import ClearBtn from "../utils/ClearBtn";
 
 export default function GenInfoForm({ setInfoData }) {
   // focus style for input-div
@@ -37,12 +39,17 @@ export default function GenInfoForm({ setInfoData }) {
     handleSubmit,
     watch,
     setValue,
+    reset,
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
   // send infoData to App
   function submitFunc(data) {
     setInfoData(data);
+  }
+
+  function clearAll() {
+    reset();
   }
 
   return (
@@ -87,7 +94,10 @@ export default function GenInfoForm({ setInfoData }) {
           register={register}
         />
       </form>
-      <SaveBtn />
+      <div className="form-bottom flex-row">
+        <ClearBtn onClick={clearAll} />
+        <SaveBtn />
+      </div>
     </>
   );
 }
