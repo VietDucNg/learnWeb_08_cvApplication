@@ -2,6 +2,8 @@
   background-color: var(--cvheader-background-color);
   padding: 50px;
   justify-content: space-between;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .CVheader h1 {
