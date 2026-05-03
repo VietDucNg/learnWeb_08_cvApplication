@@ -1,0 +1,7 @@
+.liveCV {
+  max-width: 1500px;
+  flex: 2;
+  padding: 20px;
+  border: 1px solid var(--line-break-color);
+  border-radius: 10px;
+}

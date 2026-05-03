@@ -2,6 +2,9 @@
   background-color: var(--section-background-color);
   padding: var(--section-padding);
   border-radius: 15px;
+  max-width: 800px;
+  min-width: 300px;
+  flex: 1;
 }
 
 .GenInfoDiv h5 {
