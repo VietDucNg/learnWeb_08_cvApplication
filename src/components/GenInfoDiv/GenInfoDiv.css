@@ -1,7 +1,3 @@
-.GenInfoDiv header {
-  justify-content: space-between;
-}
-
 .GenInfoDiv {
   background-color: var(--section-background-color);
   padding: var(--section-padding);

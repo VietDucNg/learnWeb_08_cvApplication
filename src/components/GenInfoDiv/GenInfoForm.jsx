@@ -6,6 +6,7 @@ import EmailFieldDiv from "./EmailFieldDiv";
 import PhoneFieldDiv from "./PhoneFieldDiv";
 import LocationFieldDiv from "./LocationFieldDiv";
 import TitleFieldDiv from "./TitleFieldDiv";
+import ClearBtn from "./ClearBtn";
 import SaveBtn from "./SaveBtn";
 
 export default function GenInfoForm({ setResetForm, setInfoData }) {
@@ -45,14 +46,6 @@ export default function GenInfoForm({ setResetForm, setInfoData }) {
   function submitFunc(data) {
     setInfoData(data);
   }
-
-  // send clear all function to App
-  useEffect(
-    function () {
-      setResetForm(() => reset);
-    },
-    [reset],
-  );
 
   return (
     <>
@@ -96,7 +89,10 @@ export default function GenInfoForm({ setResetForm, setInfoData }) {
           register={register}
         />
       </form>
-      <SaveBtn />
+      <div className=" form-bottom flex-row">
+        <ClearBtn reset={reset} />
+        <SaveBtn />
+      </div>
     </>
   );
 }

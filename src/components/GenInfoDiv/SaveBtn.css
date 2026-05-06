@@ -1,5 +1,5 @@
 .GenInfoDiv .save-btn {
-  width: 100%;
+  flex: 1;
   background-color: var(--main-color-background);
   color: var(--main-color);
 }

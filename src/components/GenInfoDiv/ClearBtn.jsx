@@ -2,10 +2,10 @@ import Button from "@mui/material/Button";
 import { BsTrash } from "react-icons/bs";
 import "./clearBtn.css";
 
-export default function ClearBtn({ setResetForm }) {
+export default function ClearBtn({ reset }) {
   return (
     <Button
-      onClick={setResetForm}
+      onClick={() => reset()}
       className="clearBtn flex-row"
       variant="text"
       color="white"
