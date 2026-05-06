@@ -47,7 +47,6 @@ export default function GenInfoForm({ setResetForm, setInfoData }) {
   }
 
   // send clear all function to App
-
   useEffect(
     function () {
       setResetForm(() => reset);
