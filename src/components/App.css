@@ -7,6 +7,10 @@ main {
   gap: 20px;
 }
 
+.left-panel {
+  flex: 1;
+}
+
 .input-div {
   background-color: var(--input-background-color);
   padding: 10px;

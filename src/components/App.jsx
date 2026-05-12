@@ -35,10 +35,11 @@ function App() {
     <div className="app-div">
       <Header />
       <main className="flex-row">
-        <GenInfoDiv setInfoData={setInfoData} />
+        <section className="left-panel">
+          <GenInfoDiv setInfoData={setInfoData} />
+        </section>
         <LiveCV infoData={infoData} />
       </main>
-      <button onClick={() => console.log(infoData)}>test</button>
     </div>
   );
 }
