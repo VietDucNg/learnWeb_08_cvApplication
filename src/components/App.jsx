@@ -4,6 +4,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Header from "./Header/Header";
 import GenInfoDiv from "./GenInfoDiv/GenInfoDiv";
+import EduDiv from "./EduDiv/EduDiv";
 import LiveCV from "./liveCV/LiveCV";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
       <main className="flex-row">
         <section className="left-panel">
           <GenInfoDiv setInfoData={setInfoData} />
+          <EduDiv />
         </section>
         <LiveCV infoData={infoData} />
       </main>
