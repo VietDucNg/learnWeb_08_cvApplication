@@ -4,9 +4,9 @@ import ListItemText from "@mui/material/ListItemText";
 import IconButton from "@mui/material/IconButton";
 import { MdDragIndicator } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-import { GoDotFill } from "react-icons/go";
+import "./EduItem.css";
 
-export default function EduItem({ eduItem, delEduItem }) {
+export default function EduItem({ eduItem, delEduItem, handleRef }) {
   const { id, type, degree, uni, from, to } = eduItem;
 
   return (
@@ -22,7 +22,7 @@ export default function EduItem({ eduItem, delEduItem }) {
         </IconButton>
       }
     >
-      <ListItemAvatar>
+      <ListItemAvatar ref={handleRef} sx={{ cursor: "pointer" }}>
         <MdDragIndicator />
       </ListItemAvatar>
       <ListItemText
