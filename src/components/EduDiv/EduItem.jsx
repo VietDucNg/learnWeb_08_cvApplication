@@ -1,8 +1,3 @@
-// export default function EduItem({ eduItem }) {
-//   const { type, degree, uni } = eduItem;
-//   return <div className="eduItem"></div>;
-// }
-
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
