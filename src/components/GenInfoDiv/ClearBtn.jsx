@@ -9,8 +9,9 @@ export default function ClearBtn({ reset }) {
       className="clearBtn flex-row"
       variant="text"
       color="white"
+      sx={{ textTransform: "none", fontSize: "1rem" }}
+      startIcon={<BsTrash />}
     >
-      <BsTrash />
       Clear
     </Button>
   );

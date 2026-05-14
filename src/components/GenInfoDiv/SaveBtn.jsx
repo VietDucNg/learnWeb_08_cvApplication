@@ -8,6 +8,7 @@ export default function SaveBtn() {
       form="gen-info-form"
       className="save-btn"
       variant="outlined"
+      sx={{ textTransform: "none", fontSize: "1rem" }}
     >
       Save Contact Info
     </Button>
