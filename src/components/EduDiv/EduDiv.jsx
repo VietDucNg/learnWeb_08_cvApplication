@@ -20,5 +20,11 @@ const initialEduList = [
 ];
 
 export default function EduDiv() {
-  return <EntryDiv initialList={initialEduList} />;
+  return (
+    <EntryDiv
+      initialList={initialEduList}
+      NewEntryBtnTitle={"Add New Education"}
+      NewEntryBtnDescription={"Degree, School, Period"}
+    />
+  );
 }

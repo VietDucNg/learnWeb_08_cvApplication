@@ -2,8 +2,13 @@ import { useState } from "react";
 import "./EntryDiv.css";
 import EntryList from "./EntryList";
 import Badge from "@mui/material/Badge";
+import NewEntryBtn from "./NewEntryBtn";
 
-export default function EntryDiv({ initialList }) {
+export default function EntryDiv({
+  initialList,
+  NewEntryBtnTitle,
+  NewEntryBtnDescription,
+}) {
   const [entryList, setEntryList] = useState(initialList);
 
   return (
@@ -25,6 +30,10 @@ export default function EntryDiv({ initialList }) {
         initialList={initialList}
         entryList={entryList}
         setEntryList={setEntryList}
+      />
+      <NewEntryBtn
+        NewEntryBtnTitle={NewEntryBtnTitle}
+        NewEntryBtnDescription={NewEntryBtnDescription}
       />
     </section>
   );

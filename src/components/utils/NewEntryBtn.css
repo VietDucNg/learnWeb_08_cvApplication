@@ -1,0 +1,13 @@
+.newEntryBtn {
+  height: 100px;
+  width: 100%;
+}
+
+.newEntryBtnTitle {
+  align-items: center;
+  gap: 10px;
+}
+.newEntryBtnDes {
+  color: var(--font-color);
+  font-size: 1em;
+}
