@@ -1,14 +1,11 @@
-import { useState } from "react";
 import { useSortable } from "@dnd-kit/react/sortable";
 import EntryItem from "./EntryItem";
 import List from "@mui/material/List";
 import "./EntryList.css";
 
-export default function EntryList({ initialList }) {
-  const [entryList, setEntryList] = useState(initialList);
-
+export default function EntryList({ setEntryList, entryList }) {
   function delItem(id) {
-    const newEntryList = List.filter((item) => item.id !== id);
+    const newEntryList = entryList.filter((item) => item.id !== id);
     setEntryList(newEntryList);
   }
 

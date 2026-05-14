@@ -6,7 +6,9 @@
   min-width: 300px;
 }
 
-.EntryDiv h5 {
+.EntryDiv header {
   padding: 10px;
   border-bottom: 1px solid var(--line-break-color);
+  gap: 15px;
+  align-items: center;
 }

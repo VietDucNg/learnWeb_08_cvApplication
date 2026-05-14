@@ -1,20 +1,31 @@
+import { useState } from "react";
 import "./EntryDiv.css";
 import EntryList from "./EntryList";
 import Badge from "@mui/material/Badge";
 
 export default function EntryDiv({ initialList }) {
+  const [entryList, setEntryList] = useState(initialList);
+
   return (
     <section className="EntryDiv">
-      <h5>
-        EDUCATION{" "}
+      <header className="flex-row">
+        <h5>EDUCATION</h5>
         <Badge
-          badgeContent={4}
-          sx={{ "& .MuiBadge-badge": { backgroundColor: "var(--main-color)" } }}
+          badgeContent={entryList.length}
+          sx={{
+            "& .MuiBadge-badge": {
+              backgroundColor: "var(--input-background-color)",
+            },
+          }}
         >
           {" "}
         </Badge>
-      </h5>
-      <EntryList initialList={initialList} />
+      </header>
+      <EntryList
+        initialList={initialList}
+        entryList={entryList}
+        setEntryList={setEntryList}
+      />
     </section>
   );
 }
