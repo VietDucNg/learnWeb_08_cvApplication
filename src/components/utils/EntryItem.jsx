@@ -2,22 +2,17 @@ import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import IconButton from "@mui/material/IconButton";
-import { MdDragIndicator } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
-import "./EduItem.css";
+import { MdDragIndicator, MdDelete } from "react-icons/md";
+import "./EntryItem.css";
 
-export default function EduItem({ eduItem, delEduItem, handleRef }) {
-  const { id, type, degree, uni, from, to } = eduItem;
+export default function EntryItem({ item, delItem, handleRef }) {
+  const { id, degreeType, degree, uni, from, to } = item;
 
   return (
     <ListItem
-      className="EduItem"
+      className="EntryItem"
       secondaryAction={
-        <IconButton
-          edge="end"
-          aria-label="delete"
-          onClick={() => delEduItem(id)}
-        >
+        <IconButton edge="end" aria-label="delete" onClick={() => delItem(id)}>
           <MdDelete color="var(--font-color)" />
         </IconButton>
       }
@@ -26,7 +21,7 @@ export default function EduItem({ eduItem, delEduItem, handleRef }) {
         <MdDragIndicator />
       </ListItemAvatar>
       <ListItemText
-        primary={`${type} in ${degree}`}
+        primary={`${degreeType} in ${degree}`}
         secondary={`${uni} ${from} - ${to}`}
         sx={{
           "& .MuiListItemText-secondary": {
