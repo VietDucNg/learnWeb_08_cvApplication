@@ -1,5 +1,4 @@
-import "./EduDiv.css";
-import EntryList from "../utils/EntryList";
+import EntryDiv from "../utils/EntryDiv";
 
 const initialEduList = [
   {
@@ -21,10 +20,5 @@ const initialEduList = [
 ];
 
 export default function EduDiv() {
-  return (
-    <section className="EduDiv">
-      <h5>EDUCATION</h5>
-      <EntryList initialList={initialEduList} />
-    </section>
-  );
+  return <EntryDiv initialList={initialEduList} />;
 }
