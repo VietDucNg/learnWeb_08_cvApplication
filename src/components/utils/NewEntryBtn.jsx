@@ -5,9 +5,15 @@ import { GiGraduateCap } from "react-icons/gi";
 export default function NewEntryBtn({
   NewEntryBtnTitle,
   NewEntryBtnDescription,
+  setIsNeuEntryFormOpen,
 }) {
+  function onClick() {
+    setIsNeuEntryFormOpen(true);
+  }
+
   return (
     <Button
+      onClick={() => onClick()}
       className="newEntryBtn flex-column"
       sx={{ backgroundColor: "black", textTransform: "none" }}
     >

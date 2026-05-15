@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import "./NewEntryForm.css";
+import ClearBtn from "./ClearBtn";
+import CancelBtn from "./CancelBtn";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -46,60 +48,67 @@ function onSubmit(data) {
   console.log(data);
 }
 
-export default function NewEntryForm() {
-  const { register, handleSubmit } = useForm();
+export default function NewEntryForm({ setIsNeuEntryFormOpen }) {
+  const { register, handleSubmit, reset } = useForm();
 
   const [fromDate, setFromDate] = useState(dayjs());
   const [toDate, setToDate] = useState(dayjs());
 
   return (
-    <section className="newEntryDiv">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        id="NewEntryForm"
-        className="NewEntryForm flex-column"
-      >
-        <TextField
-          sx={TextFieldSx}
-          id="place"
-          label="School"
-          variant="outlined"
-          {...register("place")}
-        />
-        <TextField
-          sx={TextFieldSx}
-          id="title"
-          label="Degree/ Title of study"
-          variant="outlined"
-          {...register("title")}
-        />
-        <div className="datePickerGroup flex-row">
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              slotProps={slotPropsDatePicker}
-              label="From"
-              name="fromDate"
-              maxDate={currentYear}
-              openTo="year"
-              views={["year", "month"]}
-              value={fromDate}
-              onChange={(newDate) => setFromDate(newDate)}
-            />
-          </LocalizationProvider>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              slotProps={slotPropsDatePicker}
-              label="To"
-              name="toDate"
-              maxDate={currentYear}
-              openTo="year"
-              views={["year", "month"]}
-              value={toDate}
-              onChange={(newDate) => setToDate(newDate)}
-            />
-          </LocalizationProvider>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      id="NewEntryForm"
+      className="NewEntryForm flex-column"
+    >
+      <TextField
+        sx={TextFieldSx}
+        id="place"
+        label="School"
+        variant="outlined"
+        {...register("place")}
+      />
+      <TextField
+        sx={TextFieldSx}
+        id="title"
+        label="Degree/ Title of study"
+        variant="outlined"
+        {...register("title")}
+      />
+      <div className="datePickerGroup flex-row">
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            slotProps={slotPropsDatePicker}
+            label="From"
+            name="fromDate"
+            maxDate={currentYear}
+            openTo="year"
+            views={["year", "month"]}
+            value={fromDate}
+            onChange={(newDate) => setFromDate(newDate)}
+          />
+        </LocalizationProvider>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            slotProps={slotPropsDatePicker}
+            label="To"
+            name="toDate"
+            maxDate={currentYear}
+            openTo="year"
+            views={["year", "month"]}
+            value={toDate}
+            onChange={(newDate) => setToDate(newDate)}
+          />
+        </LocalizationProvider>
+      </div>
+      <div className="newEntryFormBtnDiv flex-row">
+        <ClearBtn onClick={reset} />
+        <div className="newEntryFormBtnDiv-right">
+          <CancelBtn
+            reset={reset}
+            setIsNeuEntryFormOpen={setIsNeuEntryFormOpen}
+          />
         </div>
-      </form>
-    </section>
+      </div>
+    </form>
   );
 }

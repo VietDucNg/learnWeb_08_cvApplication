@@ -11,6 +11,7 @@ export default function EntryDiv({
   NewEntryBtnDescription,
 }) {
   const [entryList, setEntryList] = useState(initialList);
+  const [isNeuEntryFormOpen, setIsNeuEntryFormOpen] = useState(false);
 
   return (
     <section className="EntryDiv">
@@ -35,8 +36,11 @@ export default function EntryDiv({
       <NewEntryBtn
         NewEntryBtnTitle={NewEntryBtnTitle}
         NewEntryBtnDescription={NewEntryBtnDescription}
+        setIsNeuEntryFormOpen={setIsNeuEntryFormOpen}
       />
-      <NewEntryForm />
+      {isNeuEntryFormOpen && (
+        <NewEntryForm setIsNeuEntryFormOpen={setIsNeuEntryFormOpen} />
+      )}
     </section>
   );
 }

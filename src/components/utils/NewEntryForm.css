@@ -1,15 +1,14 @@
-.newEntryDiv {
+#NewEntryForm {
   background-color: black;
   padding: 20px 10px;
   border-radius: 5px;
-}
-
-#NewEntryForm {
   gap: 20px;
 }
 
 .datePickerGroup {
+  padding-bottom: 20px;
   gap: 10px;
+  border-bottom: 1px solid var(--line-break-color);
 }
 
 .MuiFormControl-root {
@@ -18,4 +17,8 @@
 
 .MuiFormControl-root > div {
   width: 100%;
+}
+
+.newEntryFormBtnDiv {
+  justify-content: space-between;
 }

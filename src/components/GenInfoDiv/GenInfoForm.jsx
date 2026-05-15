@@ -90,7 +90,7 @@ export default function GenInfoForm({ setResetForm, setInfoData }) {
         />
       </form>
       <div className=" form-bottom flex-row">
-        <ClearBtn onClick={reset} text={"Clear"} />
+        <ClearBtn sx={{ flex: 1 }} onClick={reset} text={"Clear"} />
         <SaveBtn />
       </div>
     </>
