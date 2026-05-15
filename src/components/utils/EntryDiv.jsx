@@ -3,6 +3,7 @@ import "./EntryDiv.css";
 import EntryList from "./EntryList";
 import Badge from "@mui/material/Badge";
 import NewEntryBtn from "./NewEntryBtn";
+import NewEntryForm from "./NewEntryForm";
 
 export default function EntryDiv({
   initialList,
@@ -35,6 +36,7 @@ export default function EntryDiv({
         NewEntryBtnTitle={NewEntryBtnTitle}
         NewEntryBtnDescription={NewEntryBtnDescription}
       />
+      <NewEntryForm />
     </section>
   );
 }
