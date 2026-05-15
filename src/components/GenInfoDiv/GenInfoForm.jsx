@@ -6,7 +6,7 @@ import EmailFieldDiv from "./EmailFieldDiv";
 import PhoneFieldDiv from "./PhoneFieldDiv";
 import LocationFieldDiv from "./LocationFieldDiv";
 import TitleFieldDiv from "./TitleFieldDiv";
-import ClearBtn from "./ClearBtn";
+import ClearBtn from "../utils/ClearBtn";
 import SaveBtn from "./SaveBtn";
 
 export default function GenInfoForm({ setResetForm, setInfoData }) {
@@ -90,7 +90,7 @@ export default function GenInfoForm({ setResetForm, setInfoData }) {
         />
       </form>
       <div className=" form-bottom flex-row">
-        <ClearBtn reset={reset} />
+        <ClearBtn onClick={reset} text={"Clear"} />
         <SaveBtn />
       </div>
     </>
