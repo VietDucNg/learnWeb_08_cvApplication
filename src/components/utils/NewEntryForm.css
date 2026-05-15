@@ -7,3 +7,15 @@
 #NewEntryForm {
   gap: 20px;
 }
+
+.datePickerGroup {
+  gap: 10px;
+}
+
+.MuiFormControl-root {
+  flex: 1;
+}
+
+.MuiFormControl-root > div {
+  width: 100%;
+}
