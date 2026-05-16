@@ -59,7 +59,6 @@ export default function NewEntryForm({
   setEntryList,
 }) {
   const { register, handleSubmit, reset } = useForm();
-  const [degreeType, setDegreeType] = useState("");
   const [fromDate, setFromDate] = useState(dayjs());
   const [toDate, setToDate] = useState(dayjs());
 
@@ -110,9 +109,8 @@ export default function NewEntryForm({
             sx={{ color: "var(--font-color)" }}
             labelId="demo-simple-select-label"
             id="degreeTypeSelect"
-            value={degreeType}
             label="Type"
-            onChange={(e) => setDegreeType(e.target.value)}
+            {...register("degreeType")}
           >
             <MenuItem value={""}>
               <em>None</em>
