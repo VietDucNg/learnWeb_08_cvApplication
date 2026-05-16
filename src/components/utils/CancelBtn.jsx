@@ -13,7 +13,7 @@ export default function CancelBtn({ reset, setIsNeuEntryFormOpen }) {
       variant="outlined"
       sx={{
         color: "var(--font-color)",
-        borderColor: "var(--font-color)",
+        borderColor: "var(--line-break-color)",
         textTransform: "none",
         fontSize: "1rem",
       }}

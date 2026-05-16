@@ -39,7 +39,12 @@ export default function EntryDiv({
         setIsNeuEntryFormOpen={setIsNeuEntryFormOpen}
       />
       {isNeuEntryFormOpen && (
-        <NewEntryForm setIsNeuEntryFormOpen={setIsNeuEntryFormOpen} />
+        <NewEntryForm
+          id={"NewEduEntryForm"}
+          setIsNeuEntryFormOpen={setIsNeuEntryFormOpen}
+          entryList={entryList}
+          setEntryList={setEntryList}
+        />
       )}
     </section>
   );

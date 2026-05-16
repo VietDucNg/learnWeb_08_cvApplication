@@ -1,8 +1,12 @@
-#NewEntryForm {
+#NewEduEntryForm {
   background-color: black;
   padding: 20px 10px;
   border-radius: 5px;
   gap: 20px;
+}
+
+.titleDiv {
+  gap: 10px;
 }
 
 .datePickerGroup {
@@ -21,4 +25,8 @@
 
 .newEntryFormBtnDiv {
   justify-content: space-between;
+}
+
+.newEntryFormBtnDiv-right {
+  gap: 10px;
 }
