@@ -63,13 +63,22 @@ export default function NewEntryForm({
   const [toDate, setToDate] = useState(dayjs());
 
   function onSubmit(data) {
-    const { place, title } = data;
-    const newEntryList = { ...entryList, data };
+    const { place, title, degreeType } = data;
 
     if (id === "NewEduEntryForm") {
-      console.log(newEntryList);
+      const newEntryList = [
+        ...entryList,
+        {
+          id: crypto.randomUUID(),
+          degreeType: degreeType,
+          degree: title,
+          uni: place,
+          from: fromDate.format("MMMM YYYY"),
+          to: toDate.format("MMMM YYYY"),
+        },
+      ];
+      setEntryList(newEntryList);
     }
-    // setEntryList(newEntryList);
   }
 
   return (
@@ -107,9 +116,8 @@ export default function NewEntryForm({
           </InputLabel>
           <Select
             sx={{ color: "var(--font-color)" }}
-            labelId="demo-simple-select-label"
-            id="degreeTypeSelect"
             label="Type"
+            defaultValue={""}
             {...register("degreeType")}
           >
             <MenuItem value={""}>
