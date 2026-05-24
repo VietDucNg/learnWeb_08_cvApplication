@@ -25,6 +25,28 @@ function App() {
 
   const [infoData, setInfoData] = useState(initialInfoData);
 
+  // handle edu data
+  const initialEduList = [
+    {
+      id: crypto.randomUUID(),
+      degreeType: "M.Sc.",
+      degree: "Coding Perfectionism",
+      uni: "University of Early-Bird Debugging",
+      from: 2020,
+      to: 2023,
+    },
+    {
+      id: crypto.randomUUID(),
+      degreeType: "B.Sc. ",
+      degree: "90-Minute Box-to-Box Engine",
+      uni: "Midfield Football Academy",
+      from: 2015,
+      to: 2019,
+    },
+  ];
+
+  const [eduList, setEduList] = useState(initialEduList);
+
   useEffect(
     function () {
       localStorage.setItem("infoData", JSON.stringify(infoData));
@@ -38,7 +60,7 @@ function App() {
       <main className="flex-row">
         <section className="left-panel">
           <GenInfoDiv setInfoData={setInfoData} />
-          <EduDiv />
+          <EduDiv eduList={eduList} setEduList={setEduList} />
         </section>
         <LiveCV infoData={infoData} />
       </main>

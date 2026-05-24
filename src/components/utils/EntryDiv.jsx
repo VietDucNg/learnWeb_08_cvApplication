@@ -6,11 +6,11 @@ import NewEntryBtn from "./NewEntryBtn";
 import NewEntryForm from "./NewEntryForm";
 
 export default function EntryDiv({
-  initialList,
+  entryList,
+  setEntryList,
   NewEntryBtnTitle,
   NewEntryBtnDescription,
 }) {
-  const [entryList, setEntryList] = useState(initialList);
   const [isNeuEntryFormOpen, setIsNeuEntryFormOpen] = useState(false);
 
   return (
@@ -28,11 +28,7 @@ export default function EntryDiv({
           {" "}
         </Badge>
       </header>
-      <EntryList
-        initialList={initialList}
-        entryList={entryList}
-        setEntryList={setEntryList}
-      />
+      <EntryList entryList={entryList} setEntryList={setEntryList} />
       <NewEntryBtn
         NewEntryBtnTitle={NewEntryBtnTitle}
         NewEntryBtnDescription={NewEntryBtnDescription}
