@@ -1,4 +1,7 @@
+import { DragDropProvider } from "@dnd-kit/react";
 import { useSortable } from "@dnd-kit/react/sortable";
+import { move } from "@dnd-kit/helpers";
+
 import EntryItem from "./EntryItem";
 import List from "@mui/material/List";
 import "./EntryList.css";
@@ -18,11 +21,17 @@ export default function EntryList({ setEntryList, entryList }) {
     );
   }
 
+  function handleDragEnd(event) {
+    setEntryList((items) => move(items, event));
+  }
+
   return (
     <List className={`flex-column EntryList`}>
-      {entryList.map((item, index) => (
-        <Sortable key={item.id} item={item} index={index} delItem={delItem} />
-      ))}
+      <DragDropProvider onDragOver={handleDragEnd}>
+        {entryList.map((item, index) => (
+          <Sortable key={item.id} item={item} index={index} delItem={delItem} />
+        ))}
+      </DragDropProvider>
     </List>
   );
 }
