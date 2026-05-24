@@ -21,8 +21,7 @@ export default function EntryItem({ item, delItem, handleRef }) {
         <MdDragIndicator />
       </ListItemAvatar>
       <ListItemText
-        // primary={`${degreeType} in ${degree}`}
-        primary={`${degreeType} ${degreeType && "in"} ${degree}`}
+        primary={`${degreeType} ${degreeType && degree && "in"} ${degree}`}
         secondary={`${uni} ${from} - ${to}`}
         sx={{
           "& .MuiListItemText-secondary": {

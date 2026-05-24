@@ -77,6 +77,7 @@ export default function NewEntryForm({
           to: toDate.format("MMMM YYYY"),
         },
       ];
+      console.log(newEntryList);
       setEntryList(newEntryList);
     }
   }
