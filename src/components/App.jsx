@@ -6,6 +6,7 @@ import Header from "./Header/Header";
 import GenInfoDiv from "./GenInfoDiv/GenInfoDiv";
 import EduDiv from "./EduDiv/EduDiv";
 import LiveCV from "./liveCV/LiveCV";
+import ClearBtn from "./utils/ClearBtn";
 
 function App() {
   // handle general info data
@@ -62,13 +63,24 @@ function App() {
     [infoData, eduList],
   );
 
+  function clearAll() {
+    localStorage.clear();
+    setInfoData(initialInfoData);
+    setEduList(initialEduList);
+  }
+
   return (
     <div className="app-div">
       <Header />
       <main className="flex-row">
         <section className="left-panel">
-          <GenInfoDiv setInfoData={setInfoData} />
-          <EduDiv eduList={eduList} setEduList={setEduList} />
+          <div>
+            <GenInfoDiv setInfoData={setInfoData} />
+            <EduDiv eduList={eduList} setEduList={setEduList} />
+          </div>
+          <div className="clearAllDiv">
+            <ClearBtn text={"Clear All"} onClick={clearAll} />
+          </div>
         </section>
         <LiveCV infoData={infoData} />
       </main>
