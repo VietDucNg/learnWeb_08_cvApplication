@@ -26,32 +26,40 @@ function App() {
   const [infoData, setInfoData] = useState(initialInfoData);
 
   // handle edu data
-  const initialEduList = [
-    {
-      id: crypto.randomUUID(),
-      degreeType: "M.Sc.",
-      degree: "Coding Perfectionism",
-      uni: "University of Early-Bird Debugging",
-      from: 2020,
-      to: 2023,
-    },
-    {
-      id: crypto.randomUUID(),
-      degreeType: "B.Sc. ",
-      degree: "90-Minute Box-to-Box Engine",
-      uni: "Midfield Football Academy",
-      from: 2015,
-      to: 2019,
-    },
-  ];
+  const initialEduList = function () {
+    const data = JSON.parse(localStorage.getItem("eduData"));
+    if (data) return data;
+    else {
+      return [
+        {
+          id: crypto.randomUUID(),
+          degreeType: "M.Sc.",
+          degree: "Coding Perfectionism",
+          uni: "University of Early-Bird Debugging",
+          from: 2020,
+          to: 2023,
+        },
+        {
+          id: crypto.randomUUID(),
+          degreeType: "B.Sc. ",
+          degree: "90-Minute Box-to-Box Engine",
+          uni: "Midfield Football Academy",
+          from: 2015,
+          to: 2019,
+        },
+      ];
+    }
+  };
 
   const [eduList, setEduList] = useState(initialEduList);
 
+  // localStorage
   useEffect(
     function () {
       localStorage.setItem("infoData", JSON.stringify(infoData));
+      localStorage.setItem("eduData", JSON.stringify(eduList));
     },
-    [infoData],
+    [infoData, eduList],
   );
 
   return (
