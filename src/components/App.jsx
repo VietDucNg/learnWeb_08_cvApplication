@@ -37,16 +37,18 @@ function App() {
           degreeType: "M.Sc.",
           degree: "Coding Perfectionism",
           uni: "University of Early-Bird Debugging",
-          from: 2020,
-          to: 2023,
+          location: "Germany",
+          from: "Oct 2020",
+          to: "June 2023",
         },
         {
           id: crypto.randomUUID(),
-          degreeType: "B.Sc. ",
+          degreeType: "B.Sc.",
           degree: "90-Minute Box-to-Box Engine",
           uni: "Midfield Football Academy",
-          from: 2015,
-          to: 2019,
+          location: "Hanoi, Vietnam",
+          from: "Sep 2015",
+          to: "June 2019",
         },
       ];
     }
@@ -82,7 +84,7 @@ function App() {
             <ClearBtn text={"Clear All"} onClick={clearAll} />
           </div>
         </section>
-        <LiveCV infoData={infoData} />
+        <LiveCV infoData={infoData} eduList={eduList} />
       </main>
     </div>
   );
