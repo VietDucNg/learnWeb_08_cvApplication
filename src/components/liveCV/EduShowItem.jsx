@@ -13,7 +13,7 @@ export default function EduShowItem({ eduItem }) {
 
       <div>
         <p>
-          {eduItem.from} - {eduItem.to}
+          {eduItem.from} {(eduItem.from || eduItem.to) && "-"} {eduItem.to}
         </p>
         <p className="eduItem-location">{eduItem.location}</p>
       </div>

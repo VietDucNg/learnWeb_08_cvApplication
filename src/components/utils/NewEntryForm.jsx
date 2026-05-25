@@ -9,7 +9,6 @@ import SaveBtn from "./SaveBtn";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { useState } from "react";
 import dayjs from "dayjs";
 
 // MUI select
@@ -59,11 +58,9 @@ export default function NewEntryForm({
   setEntryList,
 }) {
   const { register, handleSubmit, reset, control } = useForm();
-  const [fromDate, setFromDate] = useState(dayjs());
-  const [toDate, setToDate] = useState(dayjs());
 
   function onSubmit(data) {
-    const { place, title, degreeType, location } = data;
+    const { place, title, degreeType, location, fromDate, toDate } = data;
 
     if (id === "NewEduEntryForm") {
       const newEntryList = [
@@ -74,8 +71,8 @@ export default function NewEntryForm({
           degree: title,
           uni: place,
           location: location,
-          from: fromDate.format("MMMM YYYY"),
-          to: toDate.format("MMMM YYYY"),
+          from: fromDate ? fromDate.format("MMMM YYYY") : "",
+          to: toDate ? toDate.format("MMMM YYYY") : "",
         },
       ];
       setEntryList(newEntryList);
@@ -158,27 +155,37 @@ export default function NewEntryForm({
       />
       <div className="datePickerGroup flex-row">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            slotProps={slotPropsDatePicker}
-            label="From"
+          <Controller
             name="fromDate"
-            maxDate={currentYear}
-            openTo="year"
-            views={["year", "month"]}
-            value={fromDate}
-            onChange={(newDate) => setFromDate(newDate)}
+            control={control}
+            defaultValue={null}
+            render={({ field }) => (
+              <DatePicker
+                label="From"
+                maxDate={currentYear}
+                openTo="year"
+                views={["year", "month"]}
+                slotProps={slotPropsDatePicker}
+                value={field.value}
+                onChange={field.onChange}
+              />
+            )}
           />
-        </LocalizationProvider>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker
-            slotProps={slotPropsDatePicker}
-            label="To"
+          <Controller
             name="toDate"
-            maxDate={currentYear}
-            openTo="year"
-            views={["year", "month"]}
-            value={toDate}
-            onChange={(newDate) => setToDate(newDate)}
+            control={control}
+            defaultValue={null}
+            render={({ field }) => (
+              <DatePicker
+                label="To"
+                maxDate={currentYear}
+                openTo="year"
+                views={["year", "month"]}
+                slotProps={slotPropsDatePicker}
+                value={field.value}
+                onChange={field.onChange}
+              />
+            )}
           />
         </LocalizationProvider>
       </div>
