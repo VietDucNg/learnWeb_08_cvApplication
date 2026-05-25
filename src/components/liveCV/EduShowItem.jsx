@@ -20,9 +20,3 @@ export default function EduShowItem({ eduItem }) {
     </div>
   );
 }
-
-//   degreeType: "M.Sc.",
-//   degree: "Coding Perfectionism",
-//   uni: "University of Early-Bird Debugging",
-//   from: 2020,
-//   to: 2023,

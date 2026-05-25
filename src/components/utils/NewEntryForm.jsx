@@ -63,7 +63,7 @@ export default function NewEntryForm({
   const [toDate, setToDate] = useState(dayjs());
 
   function onSubmit(data) {
-    const { place, title, degreeType } = data;
+    const { place, title, degreeType, location } = data;
 
     if (id === "NewEduEntryForm") {
       const newEntryList = [
@@ -73,12 +73,14 @@ export default function NewEntryForm({
           degreeType: degreeType,
           degree: title,
           uni: place,
+          location: location,
           from: fromDate.format("MMMM YYYY"),
           to: toDate.format("MMMM YYYY"),
         },
       ];
       setEntryList(newEntryList);
     }
+    reset();
   }
 
   return (
@@ -141,6 +143,13 @@ export default function NewEntryForm({
           {...register("title")}
         />
       </div>
+      <TextField
+        sx={TextFieldSx}
+        id="location"
+        label="Location"
+        variant="outlined"
+        {...register("location")}
+      />
       <div className="datePickerGroup flex-row">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
