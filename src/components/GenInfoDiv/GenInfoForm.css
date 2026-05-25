@@ -31,12 +31,9 @@
   min-height: 1.5em;
 }
 
-.genInfo-form .field-div:nth-last-of-type(-n + 2) {
-  margin-bottom: 20px;
-}
-
-.genInfo-form .field-div:last-child {
+.genInfo-form .field-div:is(:last-child, :nth-last-child(2)) {
   grid-column: 1 / -1;
+  margin-bottom: 20px;
 }
 
 .form-bottom {

@@ -2,7 +2,7 @@ import { MdWorkOutline } from "react-icons/md";
 
 export default function TitleFieldDiv({ focused, setFocus, register }) {
   return (
-    <section className="title-field-div field-div flex-column">
+    <section className="field-div">
       <label htmlFor="title-input">Title</label>
       <div
         className={`input-div flex-row ${focused === "title" ? "focus" : ""}`}

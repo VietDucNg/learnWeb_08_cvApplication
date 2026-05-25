@@ -22,7 +22,7 @@ export default function EntryItem({ item, delItem, handleRef }) {
       </ListItemAvatar>
       <ListItemText
         primary={`${degreeType} ${degreeType && degree && "in"} ${degree}`}
-        secondary={`${uni} ${from} - ${to}`}
+        secondary={`${uni} ${from} ${(from || to) && "-"} ${to}`}
         sx={{
           "& .MuiListItemText-secondary": {
             color: "var(--font-color)",

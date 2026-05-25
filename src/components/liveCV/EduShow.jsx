@@ -1,14 +1,13 @@
 import { GiGraduateCap } from "react-icons/gi";
 import EduShowItem from "./EduShowItem";
-import "./EduShow.css";
 
 export default function EduShow({ eduList }) {
   return (
-    <section className="EduShowDiv">
-      <header className="EduShowHeader flex-row">
+    <section className="ShowDiv">
+      <header className="ShowHeader flex-row">
         {<GiGraduateCap />} Education
       </header>
-      <div className="EduShow flex-column">
+      <div className="Show flex-column">
         {eduList.map((eduItem) => (
           <EduShowItem key={eduItem.id} eduItem={eduItem} />
         ))}
