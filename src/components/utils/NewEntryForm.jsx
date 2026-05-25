@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import "./NewEntryForm.css";
 import ClearBtn from "./ClearBtn";
@@ -58,7 +58,7 @@ export default function NewEntryForm({
   entryList,
   setEntryList,
 }) {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, control } = useForm();
   const [fromDate, setFromDate] = useState(dayjs());
   const [toDate, setToDate] = useState(dayjs());
 
@@ -116,24 +116,30 @@ export default function NewEntryForm({
           >
             Type
           </InputLabel>
-          <Select
-            sx={{ color: "var(--font-color)" }}
-            label="Type"
+          <Controller
+            name="degreeType"
+            control={control}
             defaultValue={""}
-            {...register("degreeType")}
-          >
-            <MenuItem value={""}>
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={"B.Sc."}>B.Sc. (Bachelor of Science)</MenuItem>
-            <MenuItem value={"B.A."}>B.A. (Bachelor of Arts)</MenuItem>
-            <MenuItem value={"M.Sc."}>M.Sc. (Master of Science)</MenuItem>
-            <MenuItem value={"M.A."}>M.A. (Master of Arts)</MenuItem>
-            <MenuItem value={"MBA"}>
-              MBA (Master of Business Administration)
-            </MenuItem>
-            <MenuItem value={"Ph.D."}>Doctorate</MenuItem>
-          </Select>
+            render={({ field }) => (
+              <Select
+                sx={{ color: "var(--font-color)" }}
+                label="Type"
+                {...field}
+              >
+                <MenuItem value={""}>
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={"B.Sc."}>B.Sc. (Bachelor of Science)</MenuItem>
+                <MenuItem value={"B.A."}>B.A. (Bachelor of Arts)</MenuItem>
+                <MenuItem value={"M.Sc."}>M.Sc. (Master of Science)</MenuItem>
+                <MenuItem value={"M.A."}>M.A. (Master of Arts)</MenuItem>
+                <MenuItem value={"MBA"}>
+                  MBA (Master of Business Administration)
+                </MenuItem>
+                <MenuItem value={"Ph.D."}>Doctorate</MenuItem>
+              </Select>
+            )}
+          />
         </FormControl>
         <TextField
           sx={{ ...TextFieldSx, flex: 1 }}
