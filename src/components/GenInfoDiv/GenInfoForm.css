@@ -39,3 +39,13 @@
 .form-bottom {
   gap: 10px;
 }
+
+.genInfo-form textarea,
+.genInfo-form textarea:focus {
+  width: 100%;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  color: var(--font-color);
+  resize: vertical;
+}

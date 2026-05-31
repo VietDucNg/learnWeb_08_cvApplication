@@ -10,7 +10,7 @@ import AboutFieldDiv from "./AboutFieldDiv";
 import ClearBtn from "../utils/ClearBtn";
 import SaveBtn from "./SaveBtn";
 
-export default function GenInfoForm({ setResetForm, setInfoData }) {
+export default function GenInfoForm({ setInfoData }) {
   // focus style for input-div
   const [focused, setFocused] = useState(null);
 
