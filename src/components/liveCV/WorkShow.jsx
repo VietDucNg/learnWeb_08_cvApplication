@@ -1,15 +1,15 @@
-import { GiGraduateCap } from "react-icons/gi";
+import { MdWorkHistory } from "react-icons/md";
 import ShowItem from "../utils/ShowItem";
 
-export default function EduShow({ eduList }) {
+export default function WorkShow({ workList }) {
   return (
     <section className="ShowDiv">
       <header className="ShowHeader flex-row">
-        {<GiGraduateCap />} Education
+        {<MdWorkHistory />} Work Experience
       </header>
       <div className="Show flex-column">
-        {eduList.map((item) => (
-          <ShowItem type="edu" key={item.id} item={item} />
+        {workList.map((item) => (
+          <ShowItem type="work" key={item.id} item={item} />
         ))}
       </div>
     </section>

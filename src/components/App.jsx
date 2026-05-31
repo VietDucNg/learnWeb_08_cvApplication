@@ -118,7 +118,7 @@ function App() {
             <ClearBtn text={"Clear All"} onClick={clearAll} />
           </div>
         </section>
-        <LiveCV infoData={infoData} eduList={eduList} />
+        <LiveCV infoData={infoData} eduList={eduList} workList={workList} />
       </main>
     </div>
   );

@@ -1,7 +1,7 @@
-.EduShowItem {
+.ShowItem-top {
   justify-content: space-between;
 }
 
-.eduItem-location {
+.item-location {
   color: rgb(255, 255, 255, 0.5);
 }

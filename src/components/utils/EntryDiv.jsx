@@ -35,6 +35,7 @@ export default function EntryDiv({
         setEntryList={setEntryList}
       />
       <NewEntryBtn
+        type={type}
         NewEntryBtnTitle={NewEntryBtnTitle}
         NewEntryBtnDescription={NewEntryBtnDescription}
         setIsNeuEntryFormOpen={setIsNeuEntryFormOpen}
