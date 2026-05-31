@@ -6,7 +6,7 @@ import EntryItem from "./EntryItem";
 import List from "@mui/material/List";
 import "./EntryList.css";
 
-export default function EntryList({ setEntryList, entryList }) {
+export default function EntryList({ type, setEntryList, entryList }) {
   function delItem(id) {
     const newEntryList = entryList.filter((item) => item.id !== id);
     setEntryList(newEntryList);
@@ -16,7 +16,12 @@ export default function EntryList({ setEntryList, entryList }) {
     const { ref, handleRef } = useSortable({ id: item.id, index });
     return (
       <div ref={ref}>
-        <EntryItem item={item} delItem={delItem} handleRef={handleRef} />
+        <EntryItem
+          type={type}
+          item={item}
+          delItem={delItem}
+          handleRef={handleRef}
+        />
       </div>
     );
   }

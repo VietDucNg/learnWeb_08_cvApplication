@@ -27,7 +27,7 @@ const TextFieldSx = {
     "& fieldset": {
       borderColor: "var(--line-break-color)",
     },
-    "& input": {
+    "& input, & textarea": {
       color: "var(--font-color)",
     },
   },
@@ -52,7 +52,7 @@ const slotPropsDatePicker = {
 const currentYear = dayjs();
 
 export default function NewEntryForm({
-  id,
+  type,
   setIsNeuEntryFormOpen,
   entryList,
   setEntryList,
@@ -60,9 +60,9 @@ export default function NewEntryForm({
   const { register, handleSubmit, reset, control } = useForm();
 
   function onSubmit(data) {
-    const { place, title, degreeType, location, fromDate, toDate } = data;
+    const { place, title, degreeType, location, fromDate, toDate, role } = data;
 
-    if (id === "NewEduEntryForm") {
+    if (type === "edu") {
       const newEntryList = [
         ...entryList,
         {
@@ -76,6 +76,20 @@ export default function NewEntryForm({
         },
       ];
       setEntryList(newEntryList);
+    } else if (type === "work") {
+      const newEntryList = [
+        ...entryList,
+        {
+          id: crypto.randomUUID(),
+          position: title,
+          company: place,
+          location: location,
+          from: fromDate ? fromDate.format("MMMM YYYY") : "",
+          to: toDate ? toDate.format("MMMM YYYY") : "",
+          role: role,
+        },
+      ];
+      setEntryList(newEntryList);
     }
     reset();
   }
@@ -83,69 +97,74 @@ export default function NewEntryForm({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      id={id}
+      id={type}
       className="NewEntryForm flex-column"
     >
       <TextField
         sx={TextFieldSx}
         id="place"
-        label="School"
+        label={type == "edu" ? "School" : "Company Name"}
         variant="outlined"
         {...register("place")}
       />
       <div className="titleDiv flex-row">
-        <FormControl
-          variant="filled"
-          sx={{
-            border: "1px solid var(--line-break-color)",
-            backgroundColor: "var(--section-background-color)",
-            minWidth: "120px",
-            flex: 0,
-            borderRadius: "2px",
-            "& svg": {
-              color: "var(--font-color)",
-            },
-          }}
-        >
-          <InputLabel
-            sx={{ color: "var(--font-color)" }}
-            id="demo-simple-select-label"
+        {type == "edu" && (
+          <FormControl
+            variant="filled"
+            sx={{
+              border: "1px solid var(--line-break-color)",
+              backgroundColor: "var(--section-background-color)",
+              minWidth: "120px",
+              flex: 0,
+              borderRadius: "2px",
+              "& svg": {
+                color: "var(--font-color)",
+              },
+            }}
           >
-            Type
-          </InputLabel>
-          <Controller
-            name="degreeType"
-            control={control}
-            defaultValue={""}
-            render={({ field }) => (
-              <Select
-                sx={{ color: "var(--font-color)" }}
-                label="Type"
-                {...field}
-              >
-                <MenuItem value={""}>
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={"B.Sc."}>B.Sc. (Bachelor of Science)</MenuItem>
-                <MenuItem value={"B.A."}>B.A. (Bachelor of Arts)</MenuItem>
-                <MenuItem value={"M.Sc."}>M.Sc. (Master of Science)</MenuItem>
-                <MenuItem value={"M.A."}>M.A. (Master of Arts)</MenuItem>
-                <MenuItem value={"MBA"}>
-                  MBA (Master of Business Administration)
-                </MenuItem>
-                <MenuItem value={"Ph.D."}>Doctorate</MenuItem>
-              </Select>
-            )}
-          />
-        </FormControl>
+            <InputLabel
+              sx={{ color: "var(--font-color)" }}
+              id="demo-simple-select-label"
+            >
+              Type
+            </InputLabel>
+            <Controller
+              name="degreeType"
+              control={control}
+              defaultValue={""}
+              render={({ field }) => (
+                <Select
+                  sx={{ color: "var(--font-color)" }}
+                  label="Type"
+                  {...field}
+                >
+                  <MenuItem value={""}>
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={"B.Sc."}>
+                    B.Sc. (Bachelor of Science)
+                  </MenuItem>
+                  <MenuItem value={"B.A."}>B.A. (Bachelor of Arts)</MenuItem>
+                  <MenuItem value={"M.Sc."}>M.Sc. (Master of Science)</MenuItem>
+                  <MenuItem value={"M.A."}>M.A. (Master of Arts)</MenuItem>
+                  <MenuItem value={"MBA"}>
+                    MBA (Master of Business Administration)
+                  </MenuItem>
+                  <MenuItem value={"Ph.D."}>Doctorate</MenuItem>
+                </Select>
+              )}
+            />
+          </FormControl>
+        )}
         <TextField
           sx={{ ...TextFieldSx, flex: 1 }}
           id="title"
-          label="Degree/ Title of study"
+          label={type == "edu" ? "Degree/ Title of study" : "Position Title"}
           variant="outlined"
           {...register("title")}
         />
       </div>
+
       <TextField
         sx={TextFieldSx}
         id="location"
@@ -153,6 +172,7 @@ export default function NewEntryForm({
         variant="outlined"
         {...register("location")}
       />
+
       <div className="datePickerGroup flex-row">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Controller
@@ -189,6 +209,19 @@ export default function NewEntryForm({
           />
         </LocalizationProvider>
       </div>
+
+      {type == "work" && (
+        <TextField
+          sx={TextFieldSx}
+          id="role"
+          label="Main Responsibilities"
+          variant="outlined"
+          multiline
+          maxRows={5}
+          {...register("role")}
+        />
+      )}
+
       <div className="newEntryFormBtnDiv flex-row">
         <ClearBtn onClick={reset} />
         <div className="newEntryFormBtnDiv-right flex-row">
@@ -196,7 +229,7 @@ export default function NewEntryForm({
             reset={reset}
             setIsNeuEntryFormOpen={setIsNeuEntryFormOpen}
           />
-          <SaveBtn id={id} onSubmit={handleSubmit(onSubmit)} />
+          <SaveBtn id={type} onSubmit={handleSubmit(onSubmit)} />
         </div>
       </div>
     </form>

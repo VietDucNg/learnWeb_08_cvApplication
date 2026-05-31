@@ -5,8 +5,12 @@ import IconButton from "@mui/material/IconButton";
 import { MdDragIndicator, MdDelete } from "react-icons/md";
 import "./EntryItem.css";
 
-export default function EntryItem({ item, delItem, handleRef }) {
-  const { id, degreeType, degree, uni, from, to } = item;
+export default function EntryItem({ type, item, delItem, handleRef }) {
+  const { id, degreeType, degree, uni, from, to, position, company, role } =
+    item;
+  const eduPrimary = `${degreeType} ${degreeType && degree && "in"} ${degree}`;
+  const workPrimary = `${position}`;
+  const place = type == "edu" ? uni : company;
 
   return (
     <ListItem
@@ -21,8 +25,8 @@ export default function EntryItem({ item, delItem, handleRef }) {
         <MdDragIndicator />
       </ListItemAvatar>
       <ListItemText
-        primary={`${degreeType} ${degreeType && degree && "in"} ${degree}`}
-        secondary={`${uni} ${from} ${(from || to) && "-"} ${to}`}
+        primary={type == "edu" ? eduPrimary : workPrimary}
+        secondary={`${place} ${from} ${(from || to) && "-"} ${to}`}
         sx={{
           "& .MuiListItemText-secondary": {
             color: "var(--font-color)",

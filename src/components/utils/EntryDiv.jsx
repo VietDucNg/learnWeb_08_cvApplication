@@ -6,6 +6,7 @@ import NewEntryBtn from "./NewEntryBtn";
 import NewEntryForm from "./NewEntryForm";
 
 export default function EntryDiv({
+  type,
   entryList,
   setEntryList,
   NewEntryBtnTitle,
@@ -16,7 +17,7 @@ export default function EntryDiv({
   return (
     <section className="EntryDiv">
       <header className="flex-row">
-        <h5>EDUCATION</h5>
+        <h5>{type == "edu" ? "EDUCATION" : "WORK EXPERIENCE"}</h5>
         <Badge
           badgeContent={entryList.length}
           sx={{
@@ -28,7 +29,11 @@ export default function EntryDiv({
           {" "}
         </Badge>
       </header>
-      <EntryList entryList={entryList} setEntryList={setEntryList} />
+      <EntryList
+        type={type}
+        entryList={entryList}
+        setEntryList={setEntryList}
+      />
       <NewEntryBtn
         NewEntryBtnTitle={NewEntryBtnTitle}
         NewEntryBtnDescription={NewEntryBtnDescription}
@@ -36,7 +41,7 @@ export default function EntryDiv({
       />
       {isNeuEntryFormOpen && (
         <NewEntryForm
-          id={"NewEduEntryForm"}
+          type={type}
           setIsNeuEntryFormOpen={setIsNeuEntryFormOpen}
           entryList={entryList}
           setEntryList={setEntryList}

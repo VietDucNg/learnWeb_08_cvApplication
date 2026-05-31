@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Header from "./Header/Header";
 import GenInfoDiv from "./GenInfoDiv/GenInfoDiv";
 import EduDiv from "./EduDiv/EduDiv";
+import WorkDiv from "./WorkDiv/WorkDiv";
 import LiveCV from "./liveCV/LiveCV";
 import ClearBtn from "./utils/ClearBtn";
 
@@ -58,30 +59,61 @@ function App() {
 
   const [eduList, setEduList] = useState(initialEduList);
 
+  // handel work data
+  const initialWorkList = function () {
+    const data = JSON.parse(localStorage.getItem("workData"));
+    if (data) return data;
+    else {
+      return [
+        {
+          id: crypto.randomUUID(),
+          position: "position",
+          company: "company",
+          location: "Germany",
+          from: "Oct 2020",
+          to: "June 2023",
+          role: "role",
+        },
+        {
+          id: crypto.randomUUID(),
+          position: "position",
+          company: "company",
+          location: "Germany",
+          from: "Oct 2020",
+          to: "June 2023",
+          role: "role",
+        },
+      ];
+    }
+  };
+
+  const [workList, setWorkList] = useState(initialWorkList);
+
   // localStorage
   useEffect(
     function () {
       localStorage.setItem("infoData", JSON.stringify(infoData));
       localStorage.setItem("eduData", JSON.stringify(eduList));
+      localStorage.setItem("workData", JSON.stringify(workList));
     },
-    [infoData, eduList],
+    [infoData, eduList, workList],
   );
 
   function clearAll() {
     localStorage.clear();
     setInfoData(initialInfoData);
     setEduList(initialEduList);
+    setWorkList(initialWorkList);
   }
 
   return (
     <div className="app-div">
       <Header />
       <main className="flex-row">
-        <section className="left-panel">
-          <div>
-            <GenInfoDiv setInfoData={setInfoData} />
-            <EduDiv eduList={eduList} setEduList={setEduList} />
-          </div>
+        <section className="left-panel flex-column">
+          <GenInfoDiv setInfoData={setInfoData} />
+          <EduDiv eduList={eduList} setEduList={setEduList} />
+          <WorkDiv workList={workList} setWorkList={setWorkList} />
           <div className="clearAllDiv">
             <ClearBtn text={"Clear All"} onClick={clearAll} />
           </div>
