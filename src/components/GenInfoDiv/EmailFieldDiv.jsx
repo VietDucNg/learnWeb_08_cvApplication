@@ -1,3 +1,4 @@
+import Typography from "@mui/material/Typography";
 import { MdOutlineEmail } from "react-icons/md";
 import isEmail from "validator/lib/isEmail";
 
@@ -15,7 +16,9 @@ export default function EmailFieldDiv({
 }) {
   return (
     <section className="field-div flex-column">
-      <label htmlFor="email-input">Email Address</label>
+      <label htmlFor="email-input">
+        <Typography>Email Address</Typography>
+      </label>
       <div
         className={`input-div flex-row 
                         ${focused === "email" ? "focus" : ""}

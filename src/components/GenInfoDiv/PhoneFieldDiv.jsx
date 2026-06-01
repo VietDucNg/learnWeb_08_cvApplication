@@ -1,4 +1,5 @@
 import { FiPhone } from "react-icons/fi";
+import Typography from "@mui/material/Typography";
 import { isValidPhoneNumber } from "libphonenumber-js";
 
 const registerOptions = {
@@ -15,7 +16,9 @@ export default function PhoneFieldDiv({
 }) {
   return (
     <section className="field-div flex-column">
-      <label htmlFor="phone-input">Phone Number</label>
+      <label htmlFor="phone-input">
+        <Typography>Phone Number</Typography>
+      </label>
       <div
         className={`input-div flex-row 
                     ${focused === "phone" ? "focus" : ""}

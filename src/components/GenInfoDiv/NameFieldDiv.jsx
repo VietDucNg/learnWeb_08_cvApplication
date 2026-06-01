@@ -1,3 +1,4 @@
+import Typography from "@mui/material/Typography";
 import { IoPersonOutline } from "react-icons/io5";
 
 const NAME_REGEX = /^[\p{L}][\p{L} '-]{1,50}$/u;
@@ -27,7 +28,9 @@ export default function NameFieldDiv({
 }) {
   return (
     <section className="field-div flex-column">
-      <label htmlFor="name-input"> Full Name</label>
+      <label htmlFor="name-input">
+        <Typography>Full Name</Typography>
+      </label>
       <div
         className={`input-div flex-row 
                 ${focused === "name" ? "focus" : ""}

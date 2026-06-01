@@ -1,9 +1,12 @@
 import { AiOutlineProfile } from "react-icons/ai";
+import Typography from "@mui/material/Typography";
 
 export default function AboutFieldDiv({ focused, setFocus, register }) {
   return (
     <section className="field-div">
-      <label htmlFor="about-input">About</label>
+      <label htmlFor="about-input">
+        <Typography>About</Typography>
+      </label>
       <div
         className={`input-div flex-row ${focused === "about" ? "focus" : ""}`}
         onClick={(e) => setFocus(e, "about")}

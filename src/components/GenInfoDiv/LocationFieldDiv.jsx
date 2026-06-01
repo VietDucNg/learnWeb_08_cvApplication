@@ -1,3 +1,4 @@
+import Typography from "@mui/material/Typography";
 import { IoLocationOutline } from "react-icons/io5";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -73,7 +74,9 @@ export default function LocationFieldDiv({
 
   return (
     <section className="location-field-div field-div flex-column">
-      <label htmlFor="location-input">Location</label>
+      <label htmlFor="location-input">
+        <Typography>Location</Typography>
+      </label>
       <div
         ref={locationInputRef}
         className={`input-div flex-row ${focused === "location" ? "focus" : ""}`}
