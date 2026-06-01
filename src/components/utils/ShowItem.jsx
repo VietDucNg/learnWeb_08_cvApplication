@@ -15,7 +15,7 @@ export default function ShowItem({ type, item }) {
     <section className="ShowItem">
       <div className="ShowItem-top flex-row">
         <div>
-          {type == "edu" ? eduTitle() : item.position}
+          {type == "edu" ? eduTitle() : <strong>{item.position}</strong>}
           <br />
           <em>{type == "edu" ? item.uni : item.company}</em>
         </div>
