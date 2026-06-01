@@ -27,7 +27,7 @@ export default function ShowItem({ type, item }) {
           <p className="item-location">{item.location}</p>
         </div>
       </div>
-      {type == "work" && <p>{item.role}</p>}
+      {type == "work" && <p className="role">{item.role}</p>}
     </section>
   );
 }

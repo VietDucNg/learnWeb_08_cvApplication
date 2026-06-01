@@ -5,3 +5,7 @@
 .item-location {
   color: rgb(255, 255, 255, 0.5);
 }
+
+.role {
+  white-space: pre-line;
+}
