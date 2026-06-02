@@ -4,6 +4,7 @@ import EntryList from "./EntryList";
 import Badge from "@mui/material/Badge";
 import NewEntryBtn from "./NewEntryBtn";
 import NewEntryForm from "./NewEntryForm";
+import Typography from "@mui/material/Typography";
 
 export default function EntryDiv({
   type,
@@ -17,7 +18,9 @@ export default function EntryDiv({
   return (
     <section className="EntryDiv">
       <header className="flex-row">
-        <h5>{type == "edu" ? "EDUCATION" : "WORK EXPERIENCE"}</h5>
+        <Typography variant="h6" component={"h2"}>
+          {type == "edu" ? "EDUCATION" : "WORK EXPERIENCE"}
+        </Typography>
         <Badge
           badgeContent={entryList.length}
           sx={{

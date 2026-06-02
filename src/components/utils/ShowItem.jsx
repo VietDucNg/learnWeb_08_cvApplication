@@ -1,3 +1,4 @@
+import Typography from "@mui/material/Typography";
 import "./ShowItem.css";
 
 export default function ShowItem({ type, item }) {
@@ -15,8 +16,13 @@ export default function ShowItem({ type, item }) {
     <section className="ShowItem">
       <div className="ShowItem-top flex-row">
         <div>
-          {type == "edu" ? eduTitle() : <strong>{item.position}</strong>}
-          <br />
+          {type == "edu" ? (
+            eduTitle()
+          ) : (
+            <Typography color="primary" component={"h5"}>
+              <strong>{item.position}</strong>
+            </Typography>
+          )}
           <em>{type == "edu" ? item.uni : item.company}</em>
         </div>
 
@@ -27,7 +33,7 @@ export default function ShowItem({ type, item }) {
           <p className="item-location">{item.location}</p>
         </div>
       </div>
-      {type == "work" && <p className="role">{item.role}</p>}
+      {type == "work" && <Typography className="role">{item.role}</Typography>}
     </section>
   );
 }
