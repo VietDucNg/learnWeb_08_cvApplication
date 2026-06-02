@@ -1,6 +1,8 @@
-import "./reset.css";
-import "./style.css";
+import "../style.css";
 import "./App.css";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import { theme } from "../theme";
 import { useState, useEffect } from "react";
 import Header from "./Header/Header";
 import GenInfoDiv from "./GenInfoDiv/GenInfoDiv";
@@ -116,20 +118,23 @@ function App() {
   }
 
   return (
-    <div className="app-div">
-      <Header />
-      <main className="flex-row">
-        <section className="left-panel flex-column">
-          <GenInfoDiv setInfoData={setInfoData} />
-          <EduDiv eduList={eduList} setEduList={setEduList} />
-          <WorkDiv workList={workList} setWorkList={setWorkList} />
-          <div className="clearAllDiv">
-            <ClearBtn text={"Clear All"} onClick={clearAll} />
-          </div>
-        </section>
-        <LiveCV infoData={infoData} eduList={eduList} workList={workList} />
-      </main>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className="app-div">
+        <Header />
+        <main className="flex-row">
+          <section className="left-panel flex-column">
+            <GenInfoDiv setInfoData={setInfoData} />
+            <EduDiv eduList={eduList} setEduList={setEduList} />
+            <WorkDiv workList={workList} setWorkList={setWorkList} />
+            <div className="clearAllDiv">
+              <ClearBtn text={"Clear All"} onClick={clearAll} />
+            </div>
+          </section>
+          <LiveCV infoData={infoData} eduList={eduList} workList={workList} />
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
 
