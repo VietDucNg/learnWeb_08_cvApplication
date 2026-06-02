@@ -3,6 +3,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { Stack } from "@mui/material";
 
 export default function LocationFieldDiv({
   focused,
@@ -73,13 +74,14 @@ export default function LocationFieldDiv({
   }, []);
 
   return (
-    <section className="location-field-div field-div flex-column">
+    <Stack sx={{ position: "relative" }} className="field-div">
       <label htmlFor="location-input">
         <Typography>Location</Typography>
       </label>
-      <div
+      <Stack
+        direction={"row"}
         ref={locationInputRef}
-        className={`input-div flex-row ${focused === "location" ? "focus" : ""}`}
+        className={`input-div ${focused === "location" ? "focus" : ""}`}
         onClick={(e) => setFocus(e, "location")}
       >
         <IoLocationOutline />
@@ -89,7 +91,7 @@ export default function LocationFieldDiv({
           placeholder="Greifswald, Germany"
           {...register("location")}
         />
-      </div>
+      </Stack>
       {showAddressSuggestions && addressSuggestions.length > 0 && (
         <ul className="addressSuggestions">
           {addressSuggestions.map((address, idx) => (
@@ -99,6 +101,6 @@ export default function LocationFieldDiv({
           ))}
         </ul>
       )}
-    </section>
+    </Stack>
   );
 }

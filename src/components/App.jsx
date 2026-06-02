@@ -1,7 +1,7 @@
 import "../style.css";
 import "./App.css";
 import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
+import { CssBaseline, Stack, Box, Container } from "@mui/material";
 import { theme } from "../theme";
 import { useState, useEffect } from "react";
 import Header from "./Header/Header";
@@ -120,20 +120,30 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="app-div">
-        <Header />
-        <main className="flex-row">
-          <section className="left-panel flex-column">
-            <GenInfoDiv setInfoData={setInfoData} />
-            <EduDiv eduList={eduList} setEduList={setEduList} />
-            <WorkDiv workList={workList} setWorkList={setWorkList} />
-            <div className="clearAllDiv">
-              <ClearBtn text={"Clear All"} onClick={clearAll} />
-            </div>
-          </section>
-          <LiveCV infoData={infoData} eduList={eduList} workList={workList} />
-        </main>
-      </div>
+      <Container>
+        <Box>
+          <Header />
+          <Stack direction={"row"} sx={{ flexWrap: "wrap", my: 2, gap: 2 }}>
+            <Stack sx={{ flex: 1, gap: 2 }}>
+              <GenInfoDiv setInfoData={setInfoData} />
+              <EduDiv eduList={eduList} setEduList={setEduList} />
+              <WorkDiv workList={workList} setWorkList={setWorkList} />
+              <Box
+                sx={{
+                  borderTop: "1px solid",
+                  borderTopColor: "divider",
+                  mt: 6,
+                  px: 1,
+                  py: 2,
+                }}
+              >
+                <ClearBtn text={"Clear All"} onClick={clearAll} />
+              </Box>
+            </Stack>
+            <LiveCV infoData={infoData} eduList={eduList} workList={workList} />
+          </Stack>
+        </Box>
+      </Container>
     </ThemeProvider>
   );
 }

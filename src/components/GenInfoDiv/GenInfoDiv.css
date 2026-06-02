@@ -1,20 +1,3 @@
-.GenInfoDiv {
-  background-color: var(--section-background-color);
-  padding: var(--section-padding);
-  border-radius: 15px;
-  max-width: 800px;
-  min-width: 300px;
-}
-
-.GenInfoDiv h2 {
-  padding: 10px;
-  border-bottom: 1px solid var(--line-break-color);
-}
-
-.location-field-div {
-  position: relative;
-}
-
 .addressSuggestions {
   background: var(--section-background-color);
   position: absolute;

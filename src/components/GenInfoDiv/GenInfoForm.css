@@ -5,6 +5,8 @@
 .genInfo-form {
   grid-template-columns: repeat(auto-fit, minmax(max(250px, 45%), 1fr));
   margin: 20px 0 0 0;
+  display: grid;
+  grid-auto-flow: row;
   gap: 10px;
 }
 
@@ -38,10 +40,6 @@
 
 .genInfo-form .field-div:is(:last-child, :nth-last-child(2)) {
   grid-column: 1 / -1;
-}
-
-.form-bottom {
-  gap: 10px;
 }
 
 .genInfo-form textarea,

@@ -1,3 +1,4 @@
+import { Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { MdOutlineEmail } from "react-icons/md";
 import isEmail from "validator/lib/isEmail";
@@ -15,12 +16,13 @@ export default function EmailFieldDiv({
   register,
 }) {
   return (
-    <section className="field-div flex-column">
+    <Stack className="field-div">
       <label htmlFor="email-input">
         <Typography>Email Address</Typography>
       </label>
-      <div
-        className={`input-div flex-row 
+      <Stack
+        direction={"row"}
+        className={`input-div 
                         ${focused === "email" ? "focus" : ""}
                         ${errors.email ? "invalid" : watch("email") ? "valid" : ""}`}
         onClick={(e) => setFocus(e, "email")}
@@ -33,8 +35,8 @@ export default function EmailFieldDiv({
           name="email"
           {...register("email", registerOptions)}
         />
-      </div>
+      </Stack>
       <small className="error">{errors.email?.message}</small>
-    </section>
+    </Stack>
   );
 }

@@ -1,14 +1,16 @@
 import { AiOutlineProfile } from "react-icons/ai";
 import Typography from "@mui/material/Typography";
+import { Box, Stack } from "@mui/material";
 
 export default function AboutFieldDiv({ focused, setFocus, register }) {
   return (
-    <section className="field-div">
+    <Box className="field-div">
       <label htmlFor="about-input">
         <Typography>About</Typography>
       </label>
-      <div
-        className={`input-div flex-row ${focused === "about" ? "focus" : ""}`}
+      <Stack
+        direction={"row"}
+        className={`input-div ${focused === "about" ? "focus" : ""}`}
         onClick={(e) => setFocus(e, "about")}
       >
         <AiOutlineProfile />
@@ -20,7 +22,7 @@ export default function AboutFieldDiv({ focused, setFocus, register }) {
           name="about"
           {...register("about")}
         ></textarea>
-      </div>
-    </section>
+      </Stack>
+    </Box>
   );
 }

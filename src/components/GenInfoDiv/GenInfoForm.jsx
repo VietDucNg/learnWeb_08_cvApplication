@@ -9,6 +9,7 @@ import TitleFieldDiv from "./TitleFieldDiv";
 import AboutFieldDiv from "./AboutFieldDiv";
 import ClearBtn from "../utils/ClearBtn";
 import SaveBtn from "./SaveBtn";
+import { Stack } from "@mui/material";
 
 export default function GenInfoForm({ setInfoData }) {
   // focus style for input-div
@@ -54,7 +55,7 @@ export default function GenInfoForm({ setInfoData }) {
         ref={formRef}
         id="gen-info-form"
         onSubmit={handleSubmit(submitFunc)}
-        className="genInfo-form grid-row"
+        className="genInfo-form"
       >
         <NameFieldDiv
           focused={focused}
@@ -95,10 +96,10 @@ export default function GenInfoForm({ setInfoData }) {
           register={register}
         />
       </form>
-      <div className=" form-bottom flex-row">
+      <Stack direction={"row"} sx={{ gap: 1 }}>
         <ClearBtn sx={{ flex: 1 }} onClick={reset} text={"Clear"} />
         <SaveBtn />
-      </div>
+      </Stack>
     </>
   );
 }
