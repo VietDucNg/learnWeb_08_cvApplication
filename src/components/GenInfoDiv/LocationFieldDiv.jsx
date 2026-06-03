@@ -3,7 +3,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
-import { Stack } from "@mui/material";
+import { List, ListItem, Stack } from "@mui/material";
 
 export default function LocationFieldDiv({
   focused,
@@ -93,13 +93,25 @@ export default function LocationFieldDiv({
         />
       </Stack>
       {showAddressSuggestions && addressSuggestions.length > 0 && (
-        <ul className="addressSuggestions">
+        <List
+          sx={{
+            position: "absolute",
+            backgroundColor: "background.paper",
+            top: "70px",
+            width: "100%",
+            borderRadius: 1,
+          }}
+        >
           {addressSuggestions.map((address, idx) => (
-            <li key={idx} onClick={() => selectLocation(address)}>
+            <ListItem
+              sx={{ ":hover": { backgroundColor: "custom.inputBackground" } }}
+              key={idx}
+              onClick={() => selectLocation(address)}
+            >
               {address.label}, {address.city}, {address.country}
-            </li>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       )}
     </Stack>
   );

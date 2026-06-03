@@ -120,29 +120,27 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container>
-        <Box>
-          <Header />
-          <Stack direction={"row"} sx={{ flexWrap: "wrap", my: 2, gap: 2 }}>
-            <Stack sx={{ flex: 1, gap: 2 }}>
-              <GenInfoDiv setInfoData={setInfoData} />
-              <EduDiv eduList={eduList} setEduList={setEduList} />
-              <WorkDiv workList={workList} setWorkList={setWorkList} />
-              <Box
-                sx={{
-                  borderTop: "1px solid",
-                  borderTopColor: "divider",
-                  mt: 6,
-                  px: 1,
-                  py: 2,
-                }}
-              >
-                <ClearBtn text={"Clear All"} onClick={clearAll} />
-              </Box>
-            </Stack>
-            <LiveCV infoData={infoData} eduList={eduList} workList={workList} />
+      <Container sx={{ my: 2 }}>
+        <Header />
+        <Stack direction={"row"} sx={{ flexWrap: "wrap", my: 2, gap: 2 }}>
+          <Stack sx={{ flex: 1, gap: 2 }}>
+            <GenInfoDiv setInfoData={setInfoData} />
+            <EduDiv eduList={eduList} setEduList={setEduList} />
+            <WorkDiv workList={workList} setWorkList={setWorkList} />
+            <Box
+              sx={{
+                borderTop: "1px solid",
+                borderTopColor: "divider",
+                mt: 6,
+                px: 1,
+                py: 2,
+              }}
+            >
+              <ClearBtn text={"Clear All"} onClick={clearAll} />
+            </Box>
           </Stack>
-        </Box>
+          <LiveCV infoData={infoData} eduList={eduList} workList={workList} />
+        </Stack>
       </Container>
     </ThemeProvider>
   );
