@@ -16,7 +16,7 @@ export const theme = createTheme({
     divider: "rgb(54, 56, 60)",
     custom: {
       inputBackground: "rgb(46, 50, 59)",
-      cvHeader: "rgb(40, 49, 66)",
+      cvHeaderBackground: "rgb(40, 49, 66)",
       mainBackground: "rgba(61, 122, 245, 0.1)",
     },
   },

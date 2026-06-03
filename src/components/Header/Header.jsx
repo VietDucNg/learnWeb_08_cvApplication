@@ -1,13 +1,21 @@
 import Logo from "./Logo";
 import ExportBtn from "./ExportBtn";
-import "./Header.css";
+import { Stack } from "@mui/material";
 
 function Header() {
   return (
-    <div className="header flex-row">
+    <Stack
+      direction={"row"}
+      sx={{
+        justifyContent: "space-between",
+        borderBottom: "1px solid",
+        borderBottomColor: "divider",
+        pb: 2,
+      }}
+    >
       <Logo />
       <ExportBtn />
-    </div>
+    </Stack>
   );
 }
 

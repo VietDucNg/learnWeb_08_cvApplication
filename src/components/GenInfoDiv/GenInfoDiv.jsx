@@ -1,6 +1,5 @@
 import GenInfoForm from "./GenInfoForm";
 import Typography from "@mui/material/Typography";
-import "./GenInfoDiv.css";
 import { Box } from "@mui/material";
 
 export default function GenInfoDiv({ setInfoData }) {

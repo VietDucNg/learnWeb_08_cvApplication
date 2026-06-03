@@ -1,14 +1,16 @@
+import { Box, Stack } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { MdWorkOutline } from "react-icons/md";
 
 export default function TitleFieldDiv({ focused, setFocus, register }) {
   return (
-    <section className="field-div">
+    <Box className="field-div">
       <label htmlFor="title-input">
         <Typography>Title</Typography>
       </label>
-      <div
-        className={`input-div flex-row ${focused === "title" ? "focus" : ""}`}
+      <Stack
+        direction={"row"}
+        className={`input-div ${focused === "title" ? "focus" : ""}`}
         onClick={(e) => setFocus(e, "title")}
       >
         <MdWorkOutline />
@@ -19,7 +21,7 @@ export default function TitleFieldDiv({ focused, setFocus, register }) {
           name="title"
           {...register("title")}
         />
-      </div>
-    </section>
+      </Stack>
+    </Box>
   );
 }

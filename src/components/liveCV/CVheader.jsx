@@ -1,38 +1,56 @@
-import "./CVheader.css";
-import { MdOutlineEmail } from "react-icons/md";
-import { FiPhone } from "react-icons/fi";
-import { IoLocationOutline } from "react-icons/io5";
+import { Stack, Box, Typography } from "@mui/material";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 export default function CVheader({ infoData }) {
   return (
-    <section className="CVheader flex-row">
-      <div className="CVheader-title">
-        {infoData.name && <h1 className="name">{infoData.name}</h1>}
+    <Stack
+      direction={"row"}
+      sx={{
+        backgroundColor: "custom.cvHeaderBackground",
+        p: 6,
+        justifyContent: "space-between",
+        borderTopRightRadius: 5,
+        borderTopLeftRadius: 5,
+        gap: 2,
+      }}
+    >
+      <Box>
+        {infoData.name && (
+          <Typography sx={{ mb: 1 }} variant="h2" component="h2">
+            {infoData.name}
+          </Typography>
+        )}
 
         {infoData.title && (
-          <h2 className="title">{infoData.title.toUpperCase()}</h2>
+          <Typography variant="h5" component={"h3"}>
+            {infoData.title}
+          </Typography>
         )}
-      </div>
-      <div className="CVheader-info flex-column">
+      </Box>
+      <Stack sx={{ alignItems: "end", gap: 0.5 }}>
         {infoData.email && (
-          <p>
-            {infoData.email} {<MdOutlineEmail color="var(--main-color)" />}
-          </p>
+          <Stack direction={"row"} sx={{ alignItems: "center", gap: 1 }}>
+            {infoData.email}{" "}
+            {<EmailOutlinedIcon fontSize="small" color="primary" />}
+          </Stack>
         )}
 
         {infoData.phone && (
-          <p>
-            {infoData.phone} {<FiPhone color="var(--main-color)" />}
-          </p>
+          <Stack direction={"row"} sx={{ alignItems: "center", gap: 1 }}>
+            {infoData.phone}
+            {<LocalPhoneOutlinedIcon fontSize="small" color="primary" />}
+          </Stack>
         )}
 
         {infoData.location && (
-          <p>
+          <Stack direction={"row"} sx={{ alignItems: "center", gap: 1 }}>
             {infoData.location}
-            {<IoLocationOutline color="var(--main-color)" />}
-          </p>
+            {<HomeOutlinedIcon fontSize="small" color="primary" />}
+          </Stack>
         )}
-      </div>
-    </section>
+      </Stack>
+    </Stack>
   );
 }
