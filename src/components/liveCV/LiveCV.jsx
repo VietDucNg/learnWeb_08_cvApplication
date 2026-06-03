@@ -2,7 +2,6 @@ import CVheader from "./CVheader";
 import AboutShow from "./AboutShow";
 import EduShow from "./EduShow";
 import WorkShow from "./WorkShow";
-import "./LiveCV.css";
 import { Box } from "@mui/material";
 
 export default function LiveCV({ infoData, eduList, workList }) {
@@ -26,6 +25,7 @@ export default function LiveCV({ infoData, eduList, workList }) {
           mb: 3,
           pb: 1,
         },
+        "& .show-list": { gap: 2 },
       }}
     >
       <CVheader infoData={infoData} />

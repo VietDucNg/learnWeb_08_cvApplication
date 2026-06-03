@@ -6,7 +6,7 @@ export default function AboutShow({ infoData }) {
   return (
     <Box className="show-div">
       <Stack className="show-header" direction={"row"}>
-        {<AssignmentIndIcon />}
+        {<AssignmentIndIcon fontSize="16px" />}
         <Typography variant={"h5"} component={"h4"}>
           Intro
         </Typography>

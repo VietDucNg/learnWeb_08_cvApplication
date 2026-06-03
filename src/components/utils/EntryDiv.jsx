@@ -1,10 +1,10 @@
 import { useState } from "react";
-import "./EntryDiv.css";
 import EntryList from "./EntryList";
 import Badge from "@mui/material/Badge";
 import NewEntryBtn from "./NewEntryBtn";
 import NewEntryForm from "./NewEntryForm";
 import Typography from "@mui/material/Typography";
+import { Box, Stack } from "@mui/material";
 
 export default function EntryDiv({
   type,
@@ -16,8 +16,26 @@ export default function EntryDiv({
   const [isNeuEntryFormOpen, setIsNeuEntryFormOpen] = useState(false);
 
   return (
-    <section className="EntryDiv">
-      <header className="flex-row">
+    <Box
+      sx={{
+        backgroundColor: "background.paper",
+        px: 3,
+        py: 2,
+        borderRadius: 2,
+        maxWidth: "800px",
+        minWidth: "300px",
+      }}
+    >
+      <Stack
+        direction={"row"}
+        sx={{
+          p: 1,
+          borderBottom: "1px solid",
+          borderBottomColor: "divider",
+          gap: 2,
+          alignItems: "center",
+        }}
+      >
         <Typography variant="h6" component={"h2"}>
           {type == "edu" ? "EDUCATION" : "WORK EXPERIENCE"}
         </Typography>
@@ -31,7 +49,7 @@ export default function EntryDiv({
         >
           {" "}
         </Badge>
-      </header>
+      </Stack>
       <EntryList
         type={type}
         entryList={entryList}
@@ -51,6 +69,6 @@ export default function EntryDiv({
           setEntryList={setEntryList}
         />
       )}
-    </section>
+    </Box>
   );
 }

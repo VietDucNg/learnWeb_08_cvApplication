@@ -56,4 +56,14 @@ export const theme = createTheme({
       fontSize: "1rem",
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontSize: "1rem",
+          textTransform: "none",
+        },
+      },
+    },
+  },
 });

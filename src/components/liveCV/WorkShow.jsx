@@ -1,21 +1,22 @@
-import { MdWorkHistory } from "react-icons/md";
 import ShowItem from "../utils/ShowItem";
 import Typography from "@mui/material/Typography";
+import { Box, Stack } from "@mui/material";
+import { MdWorkHistory } from "react-icons/md";
 
 export default function WorkShow({ workList }) {
   return (
-    <section className="ShowDiv">
-      <header className="ShowHeader flex-row">
+    <Box className="show-div">
+      <Stack direction={"row"} className="show-header">
         {<MdWorkHistory />}
         <Typography variant="h5" component="h4">
           Work Experience
         </Typography>
-      </header>
-      <div className="Show flex-column">
+      </Stack>
+      <Stack className="show-list">
         {workList.map((item) => (
           <ShowItem type="work" key={item.id} item={item} />
         ))}
-      </div>
-    </section>
+      </Stack>
+    </Box>
   );
 }
