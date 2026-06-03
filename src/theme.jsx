@@ -14,6 +14,11 @@ export const theme = createTheme({
       primary: "rgb(225, 225, 225)",
     },
     divider: "rgb(54, 56, 60)",
+    custom: {
+      inputBackground: "rgb(46, 50, 59)",
+      cvHeader: "rgb(40, 49, 66)",
+      mainBackground: "rgba(61, 122, 245, 0.1)",
+    },
   },
   typography: {
     fontFamily: 'system-ui, "Segoe UI", Roboto, sans-serif',
