@@ -1,6 +1,7 @@
 import { FiPhone } from "react-icons/fi";
 import Typography from "@mui/material/Typography";
 import { isValidPhoneNumber } from "libphonenumber-js";
+import Stack from "@mui/material/Stack";
 
 const registerOptions = {
   validate: (value) =>
@@ -15,12 +16,13 @@ export default function PhoneFieldDiv({
   register,
 }) {
   return (
-    <section className="field-div flex-column">
+    <Stack className="field-div">
       <label htmlFor="phone-input">
         <Typography>Phone Number</Typography>
       </label>
-      <div
-        className={`input-div flex-row 
+      <Stack
+        direction={"row"}
+        className={`input-div
                     ${focused === "phone" ? "focus" : ""}
                     ${errors.phone ? "invalid" : watch("phone") ? "valid" : ""}`}
         onClick={(e) => setFocus(e, "phone")}
@@ -33,8 +35,8 @@ export default function PhoneFieldDiv({
           name="phone"
           {...register("phone", registerOptions)}
         />
-      </div>
+      </Stack>
       <small className="error">{errors.phone?.message}</small>
-    </section>
+    </Stack>
   );
 }

@@ -12,8 +12,8 @@ export default function CancelBtn({ reset, setIsNeuEntryFormOpen }) {
       className="CancelBtn"
       variant="outlined"
       sx={{
-        color: "var(--font-color)",
-        borderColor: "var(--line-break-color)",
+        color: "text.primary",
+        borderColor: "divider",
         textTransform: "none",
         fontSize: "1rem",
       }}

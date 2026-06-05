@@ -1,17 +1,3 @@
-:root {
-  --font-color: rgb(225, 225, 225);
-  --font-family-base:
-    system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans",
-    "Droid Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --main-color: rgba(61, 122, 245);
-  --main-color-background: rgba(61, 122, 245, 0.1);
-  --line-break-color: rgb(54, 56, 60);
-  --section-background-color: rgba(30, 33, 40);
-  --input-background-color: rgb(46, 50, 59);
-  --cvheader-background-color: rgb(40, 49, 66);
-}
-
 .grid-column {
   display: grid;
   grid-auto-flow: column;

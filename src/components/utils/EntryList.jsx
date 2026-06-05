@@ -3,8 +3,7 @@ import { useSortable } from "@dnd-kit/react/sortable";
 import { move } from "@dnd-kit/helpers";
 
 import EntryItem from "./EntryItem";
-import List from "@mui/material/List";
-import "./EntryList.css";
+import { Stack, Box } from "@mui/material";
 
 export default function EntryList({ type, setEntryList, entryList }) {
   function delItem(id) {
@@ -15,14 +14,14 @@ export default function EntryList({ type, setEntryList, entryList }) {
   function Sortable({ item, index, delItem }) {
     const { ref, handleRef } = useSortable({ id: item.id, index });
     return (
-      <div ref={ref}>
+      <Box ref={ref}>
         <EntryItem
           type={type}
           item={item}
           delItem={delItem}
           handleRef={handleRef}
         />
-      </div>
+      </Box>
     );
   }
 
@@ -31,12 +30,12 @@ export default function EntryList({ type, setEntryList, entryList }) {
   }
 
   return (
-    <List className={`flex-column EntryList`}>
+    <Stack sx={{ gap: 1 }}>
       <DragDropProvider onDragOver={handleDragEnd}>
         {entryList.map((item, index) => (
           <Sortable key={item.id} item={item} index={index} delItem={delItem} />
         ))}
       </DragDropProvider>
-    </List>
+    </Stack>
   );
 }

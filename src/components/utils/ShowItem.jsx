@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-import "./ShowItem.css";
+import { Stack, Box } from "@mui/material";
 
 export default function ShowItem({ type, item }) {
   function eduTitle() {
@@ -13,27 +13,42 @@ export default function ShowItem({ type, item }) {
   }
 
   return (
-    <section className="ShowItem">
-      <div className="ShowItem-top flex-row">
-        <div>
+    <Box>
+      <Stack
+        direction={"row"}
+        sx={{ flexWrap: "wrap", justifyContent: "space-between", gap: 1 }}
+      >
+        <Box>
           {type == "edu" ? (
             eduTitle()
           ) : (
-            <Typography color="primary" component={"h5"}>
-              <strong>{item.position}</strong>
+            <Typography
+              color="primary"
+              component={"h5"}
+              sx={{ fontWeight: "bold" }}
+            >
+              {item.position}
             </Typography>
           )}
-          <em>{type == "edu" ? item.uni : item.company}</em>
-        </div>
+          <Typography sx={{ fontStyle: "italic" }}>
+            {type == "edu" ? item.uni : item.company}
+          </Typography>
+        </Box>
 
-        <div>
-          <p>
+        <Box>
+          <Typography>
             {item.from} {(item.from || item.to) && "-"} {item.to}
-          </p>
-          <p className="item-location">{item.location}</p>
-        </div>
-      </div>
-      {type == "work" && <Typography className="role">{item.role}</Typography>}
-    </section>
+          </Typography>
+          <Typography sx={{ color: "rgb(255, 255, 255, 0.5)" }}>
+            {item.location}
+          </Typography>
+        </Box>
+      </Stack>
+      {type == "work" && (
+        <Typography sx={{ mt: 1, pl: 1, whiteSpace: "pre-line" }}>
+          {item.role}
+        </Typography>
+      )}
+    </Box>
   );
 }

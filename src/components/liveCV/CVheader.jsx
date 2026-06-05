@@ -8,6 +8,7 @@ export default function CVheader({ infoData }) {
     <Stack
       direction={"row"}
       sx={{
+        flexWrap: "wrap",
         backgroundColor: "custom.cvHeaderBackground",
         p: 6,
         justifyContent: "space-between",

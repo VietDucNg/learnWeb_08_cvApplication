@@ -16,19 +16,20 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Stack from "@mui/material/Stack";
 
 const TextFieldSx = {
   "& .MuiInputLabel-root": {
-    color: "var(--font-color)",
+    color: "text.primary",
   },
   "& .MuiOutlinedInput-root": {
-    backgroundColor: "var(--section-background-color)",
+    backgroundColor: "background.paper",
 
     "& fieldset": {
-      borderColor: "var(--line-break-color)",
+      borderColor: "divider",
     },
     "& input, & textarea": {
-      color: "var(--font-color)",
+      color: "text.primary",
     },
   },
 };
@@ -36,14 +37,18 @@ const TextFieldSx = {
 const slotPropsDatePicker = {
   textField: {
     sx: {
-      color: "var(--line-break-color)",
+      flex: "1",
+      color: "divider",
       borderRadius: "5px",
       borderWidth: "1px",
-      borderColor: "var(--line-break-color)",
+      borderColor: "divider",
       border: "1px solid",
-      backgroundColor: "var(--section-background-color)",
+      backgroundColor: "background.paper",
       "& .MuiInputLabel-root, & svg, & span": {
-        color: "var(--font-color)",
+        color: "text.primary",
+      },
+      "& fieldset": {
+        borderColor: "divider",
       },
     },
   },
@@ -107,34 +112,34 @@ export default function NewEntryForm({
         variant="outlined"
         {...register("place")}
       />
-      <div className="titleDiv flex-row">
+      <Stack direction={"row"} sx={{ gap: 1, flexWrap: "wrap" }}>
         {type == "edu" && (
           <FormControl
             variant="filled"
             sx={{
-              border: "1px solid var(--line-break-color)",
-              backgroundColor: "var(--section-background-color)",
               minWidth: "120px",
               flex: 0,
               borderRadius: "2px",
               "& svg": {
-                color: "var(--font-color)",
+                color: "text.primary",
               },
             }}
           >
-            <InputLabel
-              sx={{ color: "var(--font-color)" }}
-              id="demo-simple-select-label"
-            >
-              Type
-            </InputLabel>
+            <InputLabel sx={{ color: "text.primary" }}>Type</InputLabel>
             <Controller
               name="degreeType"
               control={control}
               defaultValue={""}
               render={({ field }) => (
                 <Select
-                  sx={{ color: "var(--font-color)" }}
+                  variant="outlined"
+                  sx={{
+                    color: "text.primary",
+                    backgroundColor: "background.paper",
+                    "& fieldset": {
+                      borderColor: "divider",
+                    },
+                  }}
                   label="Type"
                   {...field}
                 >
@@ -163,7 +168,7 @@ export default function NewEntryForm({
           variant="outlined"
           {...register("title")}
         />
-      </div>
+      </Stack>
 
       <TextField
         sx={TextFieldSx}
@@ -173,7 +178,7 @@ export default function NewEntryForm({
         {...register("location")}
       />
 
-      <div className="datePickerGroup flex-row">
+      <Stack direction={"row"} sx={{ gap: 1, flexWrap: "wrap" }}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <Controller
             name="fromDate"
@@ -208,7 +213,7 @@ export default function NewEntryForm({
             )}
           />
         </LocalizationProvider>
-      </div>
+      </Stack>
 
       {type == "work" && (
         <TextField
@@ -222,16 +227,24 @@ export default function NewEntryForm({
         />
       )}
 
-      <div className="newEntryFormBtnDiv flex-row">
+      <Stack
+        direction={"row"}
+        sx={{
+          justifyContent: "space-between",
+          borderTop: "1px solid",
+          borderTopColor: "divider",
+          pt: 2,
+        }}
+      >
         <ClearBtn onClick={reset} />
-        <div className="newEntryFormBtnDiv-right flex-row">
+        <Stack direction={"row"} sx={{ gap: 1 }}>
           <CancelBtn
             reset={reset}
             setIsNeuEntryFormOpen={setIsNeuEntryFormOpen}
           />
           <SaveBtn id={type} onSubmit={handleSubmit(onSubmit)} />
-        </div>
-      </div>
+        </Stack>
+      </Stack>
     </form>
   );
 }

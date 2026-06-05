@@ -25,7 +25,7 @@ export default function LiveCV({ infoData, eduList, workList }) {
           mb: 3,
           pb: 1,
         },
-        "& .show-list": { gap: 2 },
+        "& .show-list": { gap: 4 },
       }}
     >
       <CVheader infoData={infoData} />

@@ -1,10 +1,8 @@
 import Button from "@mui/material/Button";
-import "./NewEntryBtn.css";
-import { GiGraduateCap } from "react-icons/gi";
-import { MdWorkHistory } from "react-icons/md";
-
-const eduIcon = <GiGraduateCap style={{ fontSize: "2em" }} />;
-const workIcon = <MdWorkHistory style={{ fontSize: "2em" }} />;
+import SchoolIcon from "@mui/icons-material/School";
+import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 export default function NewEntryBtn({
   type,
@@ -19,13 +17,17 @@ export default function NewEntryBtn({
   return (
     <Button
       onClick={() => onClick()}
-      className="newEntryBtn flex-column"
-      sx={{ backgroundColor: "black", textTransform: "none" }}
+      sx={{ backgroundColor: "black", mt: 1, height: "100px", width: "100%" }}
     >
-      <p className="newEntryBtnTitle flex-row">
-        {type == "edu" ? eduIcon : workIcon} {NewEntryBtnTitle}
-      </p>
-      <p className="newEntryBtnDes"> {NewEntryBtnDescription}</p>
+      <Stack>
+        <Stack direction={"row"} sx={{ alignItems: "center", gap: 1 }}>
+          {type == "edu" ? <SchoolIcon /> : <WorkHistoryIcon />}{" "}
+          <Typography variant="h6">{NewEntryBtnTitle}</Typography>
+        </Stack>
+        <Typography sx={{ color: "text.primary" }}>
+          {NewEntryBtnDescription}
+        </Typography>
+      </Stack>
     </Button>
   );
 }

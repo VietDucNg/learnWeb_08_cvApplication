@@ -1,3 +1,4 @@
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { IoPersonOutline } from "react-icons/io5";
 
@@ -27,12 +28,13 @@ export default function NameFieldDiv({
   register,
 }) {
   return (
-    <section className="field-div flex-column">
+    <Stack className="field-div">
       <label htmlFor="name-input">
         <Typography>Full Name</Typography>
       </label>
-      <div
-        className={`input-div flex-row 
+      <Stack
+        direction={"row"}
+        className={`input-div 
                 ${focused === "name" ? "focus" : ""}
                 ${errors.name ? "invalid" : watch("name") ? "valid" : ""}`}
         onClick={(e) => setFocus(e, "name")}
@@ -45,8 +47,8 @@ export default function NameFieldDiv({
           name="name"
           {...register("name", registerOptions)}
         />
-      </div>
+      </Stack>
       <small className="error">{errors.name?.message}</small>
-    </section>
+    </Stack>
   );
 }
