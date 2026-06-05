@@ -9,7 +9,7 @@ import TitleFieldDiv from "./TitleFieldDiv";
 import AboutFieldDiv from "./AboutFieldDiv";
 import ClearBtn from "../utils/ClearBtn";
 import SaveBtn from "./SaveBtn";
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 
 export default function GenInfoForm({ setInfoData }) {
   // focus style for input-div
@@ -51,11 +51,25 @@ export default function GenInfoForm({ setInfoData }) {
 
   return (
     <>
-      <form
+      <Box
+        component={"form"}
         ref={formRef}
         id="gen-info-form"
         onSubmit={handleSubmit(submitFunc)}
-        className="genInfo-form"
+        sx={{
+          display: "grid",
+          gridAutoFlow: "row",
+          gridTemplateColumns: "repeat(auto-fit, minmax(max(250px, 45%), 1fr))",
+          gap: 1,
+          mt: 2,
+          "& .input-div": {
+            backgroundColor: "custom.inputBackground",
+            p: 1,
+            borderRadius: 1,
+            mt: 1,
+            gap: 1,
+          },
+        }}
       >
         <NameFieldDiv
           focused={focused}
@@ -95,7 +109,7 @@ export default function GenInfoForm({ setInfoData }) {
           setFocus={setFocus}
           register={register}
         />
-      </form>
+      </Box>
       <Stack direction={"row"} sx={{ gap: 1 }}>
         <ClearBtn sx={{ flex: 1 }} onClick={reset} text={"Clear"} />
         <SaveBtn />

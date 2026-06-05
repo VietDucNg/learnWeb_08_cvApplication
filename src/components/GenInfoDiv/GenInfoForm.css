@@ -2,18 +2,6 @@
   cursor: pointer;
 }
 
-.genInfo-form {
-  grid-template-columns: repeat(auto-fit, minmax(max(250px, 45%), 1fr));
-  margin: 20px 0 0 0;
-  display: grid;
-  grid-auto-flow: row;
-  gap: 10px;
-}
-
-.genInfo-form .input-div {
-  margin-top: 5px;
-}
-
 .focus {
   border: 1px solid var(--main-color);
 }

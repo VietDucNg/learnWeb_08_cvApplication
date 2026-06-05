@@ -1,15 +1,7 @@
-.input-div {
-  background-color: var(--input-background-color);
-  padding: 10px;
-  border-radius: 5px;
-  gap: 5px;
-  flex-wrap: nowrap;
-}
-
-.input-div input {
+/* .input-div input {
   background: none;
   border: none;
   outline: none;
   width: 100%;
   color: white;
-}
+} */

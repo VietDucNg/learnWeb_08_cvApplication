@@ -1,17 +1,17 @@
-import Typography from "@mui/material/Typography";
-import { IoLocationOutline } from "react-icons/io5";
+import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
-import { List, ListItem, Stack } from "@mui/material";
+import {
+  Box,
+  InputAdornment,
+  InputLabel,
+  List,
+  ListItem,
+  TextField,
+} from "@mui/material";
 
-export default function LocationFieldDiv({
-  focused,
-  setFocus,
-  watch,
-  setValue,
-  register,
-}) {
+export default function LocationFieldDiv({ setValue, register, watch }) {
   const [addressSuggestions, setAddressSuggestions] = useState([]);
   const [showAddressSuggestions, setShowAddressSuggestions] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
@@ -74,24 +74,28 @@ export default function LocationFieldDiv({
   }, []);
 
   return (
-    <Stack sx={{ position: "relative" }} className="field-div">
-      <label htmlFor="location-input">
-        <Typography>Location</Typography>
-      </label>
-      <Stack
-        direction={"row"}
-        ref={locationInputRef}
-        className={`input-div ${focused === "location" ? "focus" : ""}`}
-        onClick={(e) => setFocus(e, "location")}
+    <Box sx={{ position: "relative" }} ref={locationInputRef}>
+      <InputLabel
+        sx={{ color: "text.primary", mb: 1 }}
+        htmlFor="location-input"
       >
-        <IoLocationOutline />
-        <input
-          type="text"
-          id="location-input"
-          placeholder="Greifswald, Germany"
-          {...register("location")}
-        />
-      </Stack>
+        Location
+      </InputLabel>
+      <TextField
+        variant="outlined"
+        id="location-input"
+        placeholder="Greifswald, Germany"
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <FmdGoodOutlinedIcon />
+              </InputAdornment>
+            ),
+          },
+        }}
+        {...register("location")}
+      />
       {showAddressSuggestions && addressSuggestions.length > 0 && (
         <List
           sx={{
@@ -100,6 +104,7 @@ export default function LocationFieldDiv({
             top: "70px",
             width: "100%",
             borderRadius: 1,
+            zIndex: 10,
           }}
         >
           {addressSuggestions.map((address, idx) => (
@@ -113,6 +118,6 @@ export default function LocationFieldDiv({
           ))}
         </List>
       )}
-    </Stack>
+    </Box>
   );
 }

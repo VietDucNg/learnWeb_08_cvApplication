@@ -1,6 +1,6 @@
-import { Stack } from "@mui/material";
+import { Box, InputAdornment, InputLabel, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { MdOutlineEmail } from "react-icons/md";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import isEmail from "validator/lib/isEmail";
 
 const registerOptions = {
@@ -8,35 +8,29 @@ const registerOptions = {
   validate: (value) => isEmail(value) || "Enter a valid email",
 };
 
-export default function EmailFieldDiv({
-  focused,
-  setFocus,
-  errors,
-  watch,
-  register,
-}) {
+export default function EmailFieldDiv({ errors, register }) {
   return (
-    <Stack className="field-div">
-      <label htmlFor="email-input">
-        <Typography>Email Address</Typography>
-      </label>
-      <Stack
-        direction={"row"}
-        className={`input-div 
-                        ${focused === "email" ? "focus" : ""}
-                        ${errors.email ? "invalid" : watch("email") ? "valid" : ""}`}
-        onClick={(e) => setFocus(e, "email")}
-      >
-        <MdOutlineEmail />
-        <input
-          type="email"
-          id="email-input"
-          placeholder="viet.nguyen@webdev.com"
-          name="email"
-          {...register("email", registerOptions)}
-        />
-      </Stack>
-      <small className="error">{errors.email?.message}</small>
-    </Stack>
+    <Box>
+      <InputLabel sx={{ color: "text.primary", mb: 1 }} htmlFor="email-input">
+        Email Address
+      </InputLabel>
+      <TextField
+        variant="outlined"
+        id="email-input"
+        placeholder="viet.nguyen@webdev.com"
+        error={errors.email}
+        helperText={errors.email?.message}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <EmailOutlinedIcon />
+              </InputAdornment>
+            ),
+          },
+        }}
+        {...register("email", registerOptions)}
+      />
+    </Box>
   );
 }
