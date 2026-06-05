@@ -1,5 +1,3 @@
-import "../style.css";
-import "./App.css";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, Stack, Box, Container } from "@mui/material";
 import { theme } from "../theme";
@@ -120,7 +118,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container sx={{ my: 2 }}>
+      <Container maxWidth="none" sx={{ my: 2, maxWidth: "1800px" }}>
         <Header />
         <Stack direction={"row"} sx={{ flexWrap: "wrap", my: 2, gap: 2 }}>
           <Stack sx={{ flex: 1, gap: 2 }}>

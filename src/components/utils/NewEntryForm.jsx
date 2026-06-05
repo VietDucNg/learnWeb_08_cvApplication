@@ -1,6 +1,5 @@
 import { useForm, Controller } from "react-hook-form";
 import TextField from "@mui/material/TextField";
-import "./NewEntryForm.css";
 import ClearBtn from "./ClearBtn";
 import CancelBtn from "./CancelBtn";
 import SaveBtn from "./SaveBtn";
@@ -17,6 +16,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Stack from "@mui/material/Stack";
+import { Box } from "@mui/material";
 
 const TextFieldSx = {
   "& .MuiInputLabel-root": {
@@ -100,10 +100,11 @@ export default function NewEntryForm({
   }
 
   return (
-    <form
+    <Stack
+      sx={{ backgroundColor: "black", py: 2, px: 1, borderRadius: 1, gap: 2 }}
+      component={"form"}
       onSubmit={handleSubmit(onSubmit)}
       id={type}
-      className="NewEntryForm flex-column"
     >
       <TextField
         sx={TextFieldSx}
@@ -245,6 +246,6 @@ export default function NewEntryForm({
           <SaveBtn id={type} onSubmit={handleSubmit(onSubmit)} />
         </Stack>
       </Stack>
-    </form>
+    </Stack>
   );
 }

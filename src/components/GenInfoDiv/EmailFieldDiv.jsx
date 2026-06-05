@@ -16,10 +16,11 @@ export default function EmailFieldDiv({ errors, register }) {
       </InputLabel>
       <TextField
         variant="outlined"
+        fullWidth
         id="email-input"
         placeholder="viet.nguyen@webdev.com"
         error={errors.email}
-        helperText={errors.email?.message}
+        helperText={errors.email?.message || " "}
         slotProps={{
           input: {
             startAdornment: (

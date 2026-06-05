@@ -74,7 +74,7 @@ export default function LocationFieldDiv({ setValue, register, watch }) {
   }, []);
 
   return (
-    <Box sx={{ position: "relative" }} ref={locationInputRef}>
+    <Box sx={{ position: "relative", mb: "20px" }} ref={locationInputRef}>
       <InputLabel
         sx={{ color: "text.primary", mb: 1 }}
         htmlFor="location-input"
@@ -83,6 +83,7 @@ export default function LocationFieldDiv({ setValue, register, watch }) {
       </InputLabel>
       <TextField
         variant="outlined"
+        fullWidth
         id="location-input"
         placeholder="Greifswald, Germany"
         slotProps={{

@@ -1,16 +1,15 @@
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import Typography from "@mui/material/Typography";
+import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import { Box, InputAdornment, InputLabel, TextField } from "@mui/material";
 
 export default function AboutFieldDiv({ register }) {
   return (
-    <Box>
+    <Box sx={{ mb: "20px", gridColumn: "1/-1" }}>
       <InputLabel sx={{ color: "text.primary", mb: 1 }} htmlFor="about-input">
         About
       </InputLabel>
       <TextField
-        sx={{ color: "text.primary" }}
         variant="outlined"
+        fullWidth
         id="about-input"
         multiline
         rows={8}
@@ -18,9 +17,10 @@ export default function AboutFieldDiv({ register }) {
         name="about"
         slotProps={{
           input: {
+            sx: { alignItems: "flex-start" },
             startAdornment: (
               <InputAdornment position="start">
-                <InfoOutlinedIcon />
+                <AssignmentIndIcon />
               </InputAdornment>
             ),
           },

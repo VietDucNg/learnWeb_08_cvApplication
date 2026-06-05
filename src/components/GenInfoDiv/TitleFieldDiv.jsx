@@ -1,27 +1,28 @@
-import { Box, Stack } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import { MdWorkOutline } from "react-icons/md";
+import { Box, InputAdornment, InputLabel, TextField } from "@mui/material";
+import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
 
-export default function TitleFieldDiv({ focused, setFocus, register }) {
+export default function TitleFieldDiv({ register }) {
   return (
-    <Box className="field-div">
-      <label htmlFor="title-input">
-        <Typography>Title</Typography>
-      </label>
-      <Stack
-        direction={"row"}
-        className={`input-div ${focused === "title" ? "focus" : ""}`}
-        onClick={(e) => setFocus(e, "title")}
-      >
-        <MdWorkOutline />
-        <input
-          type="title"
-          id="title-input"
-          placeholder="WebGIS developer"
-          name="title"
-          {...register("title")}
-        />
-      </Stack>
+    <Box sx={{ mb: "20px", gridColumn: "1/-1" }}>
+      <InputLabel sx={{ color: "text.primary", mb: 1 }} htmlFor="title-input">
+        Title
+      </InputLabel>
+      <TextField
+        variant="outlined"
+        fullWidth
+        id="title-input"
+        placeholder="WebGIS developer"
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <WorkOutlineOutlinedIcon />
+              </InputAdornment>
+            ),
+          },
+        }}
+        {...register("title")}
+      />
     </Box>
   );
 }

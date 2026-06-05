@@ -1,6 +1,6 @@
+import { InputAdornment, InputLabel, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import { IoPersonOutline } from "react-icons/io5";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
 const NAME_REGEX = /^[\p{L}][\p{L} '-]{1,50}$/u;
 
@@ -20,35 +20,29 @@ const registerOptions = {
   },
 };
 
-export default function NameFieldDiv({
-  focused,
-  setFocus,
-  errors,
-  watch,
-  register,
-}) {
+export default function NameFieldDiv({ errors, register }) {
   return (
-    <Stack className="field-div">
-      <label htmlFor="name-input">
-        <Typography>Full Name</Typography>
-      </label>
-      <Stack
-        direction={"row"}
-        className={`input-div 
-                ${focused === "name" ? "focus" : ""}
-                ${errors.name ? "invalid" : watch("name") ? "valid" : ""}`}
-        onClick={(e) => setFocus(e, "name")}
-      >
-        <IoPersonOutline />
-        <input
-          type="text"
-          id="name-input"
-          placeholder="Viet Nguyen"
-          name="name"
-          {...register("name", registerOptions)}
-        />
-      </Stack>
-      <small className="error">{errors.name?.message}</small>
+    <Stack>
+      <InputLabel sx={{ color: "text.primary", mb: 1 }} htmlFor="name-input">
+        Full Name
+      </InputLabel>
+      <TextField
+        variant="outlined"
+        id="name-input"
+        placeholder="Viet Nguyen"
+        error={errors.name}
+        helperText={errors.name?.message || " "}
+        slotProps={{
+          input: {
+            startAdornment: (
+              <InputAdornment position="start">
+                <PersonOutlineOutlinedIcon />
+              </InputAdornment>
+            ),
+          },
+        }}
+        {...register("name", registerOptions)}
+      />
     </Stack>
   );
 }
