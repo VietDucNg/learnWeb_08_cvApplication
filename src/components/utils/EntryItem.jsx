@@ -13,7 +13,7 @@ export default function EntryItem({ type, item, delItem, handleRef }) {
 
   return (
     <ListItem
-      sx={{ backgroundColor: "custom.inputBackground", borderRadius: 1 }}
+      sx={{ backgroundColor: "background.paper", borderRadius: 1 }}
       secondaryAction={
         <IconButton edge="end" aria-label="delete" onClick={() => delItem(id)}>
           <DeleteIcon />

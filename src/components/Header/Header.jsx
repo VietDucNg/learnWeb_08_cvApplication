@@ -1,8 +1,14 @@
 import Logo from "./Logo";
 import ExportBtn from "./ExportBtn";
-import { Stack } from "@mui/material";
+import { IconButton, Stack } from "@mui/material";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
-function Header() {
+export default function Header({ mode, setMode }) {
+  function changeMode() {
+    setMode((prev) => (prev === "dark" ? "light" : "dark"));
+  }
+
   return (
     <Stack
       direction={"row"}
@@ -14,9 +20,12 @@ function Header() {
       }}
     >
       <Logo />
-      <ExportBtn />
+      <Stack direction={"row"} spacing={2}>
+        <IconButton onClick={changeMode}>
+          {mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
+        </IconButton>
+        <ExportBtn />
+      </Stack>
     </Stack>
   );
 }
-
-export default Header;

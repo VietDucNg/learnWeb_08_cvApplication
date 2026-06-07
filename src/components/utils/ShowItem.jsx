@@ -39,7 +39,7 @@ export default function ShowItem({ type, item }) {
           <Typography>
             {item.from} {(item.from || item.to) && "-"} {item.to}
           </Typography>
-          <Typography sx={{ color: "rgb(255, 255, 255, 0.5)" }}>
+          <Typography sx={{ color: "text.secondary" }}>
             {item.location}
           </Typography>
         </Box>

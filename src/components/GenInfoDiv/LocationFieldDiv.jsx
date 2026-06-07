@@ -101,8 +101,7 @@ export default function LocationFieldDiv({ setValue, register, watch }) {
         <List
           sx={{
             position: "absolute",
-            backgroundColor: "background.paper",
-            top: "70px",
+            backgroundColor: "background.paperSolid",
             width: "100%",
             borderRadius: 1,
             zIndex: 10,
@@ -110,7 +109,7 @@ export default function LocationFieldDiv({ setValue, register, watch }) {
         >
           {addressSuggestions.map((address, idx) => (
             <ListItem
-              sx={{ ":hover": { backgroundColor: "custom.inputBackground" } }}
+              sx={{ ":hover": { backgroundColor: "action.hover" } }}
               key={idx}
               onClick={() => selectLocation(address)}
             >

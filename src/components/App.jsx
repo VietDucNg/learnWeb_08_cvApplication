@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, Stack, Box, Container } from "@mui/material";
-import { theme } from "../theme";
-import { useState, useEffect } from "react";
+import getTheme from "../theme";
+import { useMemo, useState, useEffect } from "react";
 import Header from "./Header/Header";
 import GenInfoDiv from "./GenInfoDiv/GenInfoDiv";
 import EduDiv from "./EduDiv/EduDiv";
@@ -10,6 +10,15 @@ import LiveCV from "./liveCV/LiveCV";
 import ClearBtn from "./utils/ClearBtn";
 
 function App() {
+  // handle color mode
+  const initialMode = function () {
+    return localStorage.getItem("mode") || "dark";
+  };
+
+  const [mode, setMode] = useState(initialMode);
+
+  const theme = useMemo(() => getTheme(mode), [mode]);
+
   // handle general info data
   const initialInfoData = function () {
     const data = JSON.parse(localStorage.getItem("infoData"));
@@ -108,6 +117,13 @@ function App() {
     [infoData, eduList, workList],
   );
 
+  useEffect(
+    function () {
+      localStorage.setItem("mode", mode);
+    },
+    [mode],
+  );
+
   function clearAll() {
     localStorage.clear();
     setInfoData(initialInfoData);
@@ -119,7 +135,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="none" sx={{ my: 2, maxWidth: "1800px" }}>
-        <Header />
+        <Header mode={mode} setMode={setMode} />
         <Stack direction={"row"} sx={{ flexWrap: "wrap", my: 2, gap: 2 }}>
           <Stack sx={{ flex: 1, gap: 2 }}>
             <GenInfoDiv setInfoData={setInfoData} />

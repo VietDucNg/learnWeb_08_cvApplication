@@ -16,7 +16,6 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Stack from "@mui/material/Stack";
-import { Box } from "@mui/material";
 
 const TextFieldSx = {
   "& .MuiInputLabel-root": {
@@ -38,18 +37,20 @@ const slotPropsDatePicker = {
   textField: {
     sx: {
       flex: "1",
-      color: "divider",
-      borderRadius: "5px",
-      borderWidth: "1px",
-      borderColor: "divider",
-      border: "1px solid",
       backgroundColor: "background.paper",
-      "& .MuiInputLabel-root, & svg, & span": {
-        color: "text.primary",
-      },
       "& fieldset": {
         borderColor: "divider",
       },
+    },
+  },
+  desktopPaper: {
+    sx: {
+      backgroundColor: "background.paperSolid",
+    },
+  },
+  mobilePaper: {
+    sx: {
+      backgroundColor: "background.paperSolid",
     },
   },
 };
@@ -101,7 +102,13 @@ export default function NewEntryForm({
 
   return (
     <Stack
-      sx={{ backgroundColor: "black", py: 2, px: 1, borderRadius: 1, gap: 2 }}
+      sx={{
+        backgroundColor: "background.paper",
+        py: 2,
+        px: 1,
+        borderRadius: 1,
+        gap: 2,
+      }}
       component={"form"}
       onSubmit={handleSubmit(onSubmit)}
       id={type}
@@ -121,9 +128,6 @@ export default function NewEntryForm({
               minWidth: "120px",
               flex: 0,
               borderRadius: "2px",
-              "& svg": {
-                color: "text.primary",
-              },
             }}
           >
             <InputLabel sx={{ color: "text.primary" }}>Type</InputLabel>
@@ -135,10 +139,18 @@ export default function NewEntryForm({
                 <Select
                   variant="outlined"
                   sx={{
-                    color: "text.primary",
                     backgroundColor: "background.paper",
                     "& fieldset": {
                       borderColor: "divider",
+                    },
+                  }}
+                  MenuProps={{
+                    slotProps: {
+                      paper: {
+                        sx: {
+                          backgroundColor: "background.paperSolid",
+                        },
+                      },
                     },
                   }}
                   label="Type"

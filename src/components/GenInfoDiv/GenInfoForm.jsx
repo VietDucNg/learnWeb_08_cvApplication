@@ -39,7 +39,7 @@ export default function GenInfoForm({ setInfoData }) {
           mt: 2,
           // input background
           "& .MuiInputBase-root": {
-            backgroundColor: "custom.inputBackground",
+            backgroundColor: "background.paper",
           },
         }}
       >

@@ -8,8 +8,9 @@ export default function CVheader({ infoData }) {
     <Stack
       direction={"row"}
       sx={{
+        color: "white",
         flexWrap: "wrap",
-        backgroundColor: "custom.cvHeaderBackground",
+        backgroundColor: "primary.dark",
         p: 6,
         justifyContent: "space-between",
         borderTopRightRadius: 5,
@@ -33,22 +34,22 @@ export default function CVheader({ infoData }) {
       <Stack sx={{ alignItems: "end", gap: 0.5 }}>
         {infoData.email && (
           <Stack direction={"row"} sx={{ alignItems: "center", gap: 1 }}>
-            {infoData.email}{" "}
-            {<EmailOutlinedIcon fontSize="small" color="primary" />}
+            {infoData.email}
+            {<EmailOutlinedIcon fontSize="small" />}
           </Stack>
         )}
 
         {infoData.phone && (
           <Stack direction={"row"} sx={{ alignItems: "center", gap: 1 }}>
             {infoData.phone}
-            {<LocalPhoneOutlinedIcon fontSize="small" color="primary" />}
+            {<LocalPhoneOutlinedIcon fontSize="small" />}
           </Stack>
         )}
 
         {infoData.location && (
           <Stack direction={"row"} sx={{ alignItems: "center", gap: 1 }}>
             {infoData.location}
-            {<HomeOutlinedIcon fontSize="small" color="primary" />}
+            {<HomeOutlinedIcon fontSize="small" />}
           </Stack>
         )}
       </Stack>

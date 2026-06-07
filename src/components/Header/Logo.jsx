@@ -11,7 +11,7 @@ export default function Logo() {
       <TextSnippetOutlinedIcon
         sx={{
           backgroundColor: "primary.main",
-          color: "black",
+          color: "background.default",
           borderRadius: "5px",
           padding: "2px",
         }}

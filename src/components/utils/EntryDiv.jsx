@@ -43,7 +43,7 @@ export default function EntryDiv({
           badgeContent={entryList.length}
           sx={{
             "& .MuiBadge-badge": {
-              backgroundColor: "custom.inputBackground",
+              backgroundColor: "background.paper",
             },
           }}
         >

@@ -16,8 +16,14 @@ export default function NewEntryBtn({
 
   return (
     <Button
+      variant="outlined"
       onClick={() => onClick()}
-      sx={{ backgroundColor: "black", mt: 1, height: "100px", width: "100%" }}
+      sx={{
+        backgroundColor: "background.paper",
+        mt: 1,
+        height: "100px",
+        width: "100%",
+      }}
     >
       <Stack>
         <Stack direction={"row"} sx={{ alignItems: "center", gap: 1 }}>

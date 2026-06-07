@@ -12,7 +12,7 @@ export default function LiveCV({ infoData, eduList, workList }) {
         flex: "2",
         p: 2,
         border: "1px solid",
-        borderColor: "divider",
+        borderColor: "text.primary",
         borderRadius: 2,
         "& .show-div": {
           padding: " 50px 50px 0 50px",
