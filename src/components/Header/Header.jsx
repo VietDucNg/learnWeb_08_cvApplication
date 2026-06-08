@@ -4,7 +4,7 @@ import { IconButton, Stack } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 
-export default function Header({ mode, setMode }) {
+export default function Header({ mode, setMode, handelPrint }) {
   function changeMode() {
     setMode((prev) => (prev === "dark" ? "light" : "dark"));
   }
@@ -24,7 +24,7 @@ export default function Header({ mode, setMode }) {
         <IconButton onClick={changeMode}>
           {mode === "dark" ? <DarkModeIcon /> : <LightModeIcon />}
         </IconButton>
-        <ExportBtn />
+        <ExportBtn handelPrint={handelPrint} />
       </Stack>
     </Stack>
   );

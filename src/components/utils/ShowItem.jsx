@@ -6,7 +6,7 @@ export default function ShowItem({ type, item }) {
     return (
       <>
         <Typography
-          sx={{ fontWeight: "bold", display: "inline", color: "text.primary" }}
+          sx={{ fontWeight: "bold", display: "inline", color: "primary.main" }}
         >
           {item.degreeType}
         </Typography>

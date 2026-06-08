@@ -4,9 +4,10 @@ import EduShow from "./EduShow";
 import WorkShow from "./WorkShow";
 import { Box } from "@mui/material";
 
-export default function LiveCV({ infoData, eduList, workList }) {
+export default function LiveCV({ ref, infoData, eduList, workList }) {
   return (
     <Box
+      ref={ref}
       sx={{
         maxWidth: "1500px",
         flex: "2",

@@ -1,13 +1,14 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, Stack, Box, Container } from "@mui/material";
 import getTheme from "../theme";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import Header from "./Header/Header";
 import GenInfoDiv from "./GenInfoDiv/GenInfoDiv";
 import EduDiv from "./EduDiv/EduDiv";
 import WorkDiv from "./WorkDiv/WorkDiv";
 import LiveCV from "./liveCV/LiveCV";
 import ClearBtn from "./utils/ClearBtn";
+import { useReactToPrint } from "react-to-print";
 
 function App() {
   // handle color mode
@@ -124,6 +125,14 @@ function App() {
     [mode],
   );
 
+  // export pdf
+  const cvRef = useRef(null);
+
+  const handelPrint = useReactToPrint({
+    contentRef: cvRef,
+    documentTitle: `${infoData?.name}_CV`,
+  });
+
   function clearAll() {
     localStorage.clear();
     setInfoData(initialInfoData);
@@ -135,7 +144,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="none" sx={{ my: 2, maxWidth: "1800px" }}>
-        <Header mode={mode} setMode={setMode} />
+        <Header mode={mode} setMode={setMode} handelPrint={handelPrint} />
         <Stack direction={"row"} sx={{ flexWrap: "wrap", my: 2, gap: 2 }}>
           <Stack sx={{ flex: 1, gap: 2 }}>
             <GenInfoDiv setInfoData={setInfoData} />
@@ -153,7 +162,12 @@ function App() {
               <ClearBtn text={"Clear All"} onClick={clearAll} />
             </Box>
           </Stack>
-          <LiveCV infoData={infoData} eduList={eduList} workList={workList} />
+          <LiveCV
+            ref={cvRef}
+            infoData={infoData}
+            eduList={eduList}
+            workList={workList}
+          />
         </Stack>
       </Container>
     </ThemeProvider>
