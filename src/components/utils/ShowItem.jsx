@@ -17,7 +17,7 @@ export default function ShowItem({ type, item }) {
   }
 
   return (
-    <Box>
+    <Box className={"showItem"}>
       <Stack
         direction={"row"}
         sx={{ flexWrap: "wrap", justifyContent: "space-between", gap: 1 }}

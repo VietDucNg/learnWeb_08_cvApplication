@@ -27,6 +27,14 @@ export default function LiveCV({ ref, infoData, eduList, workList }) {
           pb: 1,
         },
         "& .show-list": { gap: 4 },
+        "@media print": {
+          backgroundColor: "background.default",
+          border: "none",
+          "& .showItem": {
+            pageBreakInside: "avoid",
+            breakInside: "avoid",
+          },
+        },
       }}
     >
       <CVheader infoData={infoData} />
