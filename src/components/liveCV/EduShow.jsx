@@ -1,4 +1,4 @@
-import { GiGraduateCap } from "react-icons/gi";
+import SchoolIcon from "@mui/icons-material/School";
 import ShowItem from "../utils/ShowItem";
 import Typography from "@mui/material/Typography";
 import { Stack, Box } from "@mui/material";
@@ -7,7 +7,7 @@ export default function EduShow({ eduList }) {
   return (
     <Box className="show-div">
       <Stack direction={"row"} className="show-header">
-        {<GiGraduateCap />}
+        {<SchoolIcon />}
         <Typography variant={"h5"} component={"h4"}>
           Education
         </Typography>

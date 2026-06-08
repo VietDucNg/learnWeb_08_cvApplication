@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import { BsTrash } from "react-icons/bs";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function ClearBtn({ onClick, text, sx }) {
   return (
@@ -8,7 +8,7 @@ export default function ClearBtn({ onClick, text, sx }) {
       variant="text"
       color="white"
       sx={{ ...sx }}
-      startIcon={<BsTrash />}
+      startIcon={<DeleteIcon />}
     >
       {text}
     </Button>

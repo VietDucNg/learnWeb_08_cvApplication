@@ -5,7 +5,11 @@ export default function ShowItem({ type, item }) {
   function eduTitle() {
     return (
       <>
-        <strong>{item.degreeType}</strong>
+        <Typography
+          sx={{ fontWeight: "bold", display: "inline", color: "text.primary" }}
+        >
+          {item.degreeType}
+        </Typography>
         {item.degreeType && item.degree && " in "}
         {item.degree}
       </>

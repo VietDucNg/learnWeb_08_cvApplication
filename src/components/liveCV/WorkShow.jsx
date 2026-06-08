@@ -1,13 +1,13 @@
 import ShowItem from "../utils/ShowItem";
 import Typography from "@mui/material/Typography";
 import { Box, Stack } from "@mui/material";
-import { MdWorkHistory } from "react-icons/md";
+import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 
 export default function WorkShow({ workList }) {
   return (
     <Box className="show-div">
       <Stack direction={"row"} className="show-header">
-        {<MdWorkHistory />}
+        {<WorkHistoryIcon />}
         <Typography variant="h5" component="h4">
           Work Experience
         </Typography>
