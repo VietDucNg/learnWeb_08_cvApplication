@@ -52,7 +52,7 @@ function App() {
           uni: "University of Early-Bird Debugging",
           location: "Germany",
           from: "Oct 2020",
-          to: "June 2023",
+          to: "Jun 2023",
         },
         {
           id: crypto.randomUUID(),
@@ -61,7 +61,7 @@ function App() {
           uni: "Midfield Football Academy",
           location: "Hanoi, Vietnam",
           from: "Sep 2015",
-          to: "June 2019",
+          to: "Jun 2019",
         },
       ];
     }
@@ -90,7 +90,7 @@ function App() {
           company: "Console.log() GmbH",
           location: "Germany",
           from: "May 2024",
-          to: "April 2025",
+          to: "Apr 2025",
           role: "- Discovered that 44% of bugs disappeared after carefully reading the error message.\n- Responsible for locating bugs by repeatedly printing console.log() and hoping for the best.\n- Earned Employee of the Month after locating a missing semicolon that had been hiding for three days.",
         },
         {
@@ -99,7 +99,7 @@ function App() {
           company: "Midfield Analytics GmbH",
           location: "Germany",
           from: "Jan 2021",
-          to: "April 2024",
+          to: "Apr 2024",
           role: "- Transformed millions of satellite pixels into meaningful maps and occasionally colorful mistakes.\n- Developed interactive WebGIS applications that helped users find patterns faster than defenders could find me in midfield.\n- Automated geospatial workflows, saving hundreds of hours and several coffee breaks.",
         },
       ];

@@ -13,6 +13,8 @@ export default function Header({ mode, setMode, handelPrint }) {
     <Stack
       direction={"row"}
       sx={{
+        flexWrap: "wrap",
+        gap: 1,
         justifyContent: "space-between",
         borderBottom: "1px solid",
         borderBottomColor: "divider",

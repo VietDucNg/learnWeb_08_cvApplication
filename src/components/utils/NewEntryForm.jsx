@@ -64,39 +64,55 @@ export default function NewEntryForm({
   setEntryList,
   itemToEdit,
 }) {
-  const { register, handleSubmit, reset, control } = useForm();
+  const defaultValue = {
+    place: type === "edu" ? itemToEdit?.uni || "" : itemToEdit?.company || "",
+    title:
+      type === "edu" ? itemToEdit?.degree || "" : itemToEdit?.position || "",
+    degreeType: itemToEdit?.degreeType || "",
+    location: itemToEdit?.location || "",
+    fromDate: itemToEdit?.from ? dayjs(itemToEdit.from, "MMM YYYY") : null,
+    toDate: itemToEdit?.to ? dayjs(itemToEdit.to, "MMM YYYY") : null,
+    role: itemToEdit?.role || "",
+  };
+
+  const { register, handleSubmit, reset, control } = useForm({
+    values: defaultValue,
+  });
 
   function onSubmit(data) {
     const { place, title, degreeType, location, fromDate, toDate, role } = data;
 
+    let updatedItem;
     if (type === "edu") {
-      const newEntryList = [
-        ...entryList,
-        {
-          id: crypto.randomUUID(),
-          degreeType: degreeType,
-          degree: title,
-          uni: place,
-          location: location,
-          from: fromDate ? fromDate.format("MMMM YYYY") : "",
-          to: toDate ? toDate.format("MMMM YYYY") : "",
-        },
-      ];
-      setEntryList(newEntryList);
+      updatedItem = {
+        id: itemToEdit ? itemToEdit.id : crypto.randomUUID(),
+        degreeType: degreeType,
+        degree: title,
+        uni: place,
+        location: location,
+        from: fromDate ? fromDate.format("MMM YYYY") : "",
+        to: toDate ? toDate.format("MMM YYYY") : "",
+      };
     } else if (type === "work") {
-      const newEntryList = [
-        ...entryList,
-        {
-          id: crypto.randomUUID(),
-          position: title,
-          company: place,
-          location: location,
-          from: fromDate ? fromDate.format("MMMM YYYY") : "",
-          to: toDate ? toDate.format("MMMM YYYY") : "",
-          role: role,
-        },
-      ];
-      setEntryList(newEntryList);
+      updatedItem = {
+        id: itemToEdit ? itemToEdit.id : crypto.randomUUID(),
+        position: title,
+        company: place,
+        location: location,
+        from: fromDate ? fromDate.format("MMM YYYY") : "",
+        to: toDate ? toDate.format("MMM YYYY") : "",
+        role: role,
+      };
+    }
+
+    if (itemToEdit) {
+      setEntryList(
+        entryList.map((item) =>
+          item.id === itemToEdit.id ? updatedItem : item,
+        ),
+      );
+    } else {
+      setEntryList([...entryList, updatedItem]);
     }
     reset();
     setOpenEntryForm(null);
