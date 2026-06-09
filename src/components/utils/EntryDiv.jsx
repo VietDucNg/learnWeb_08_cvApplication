@@ -13,7 +13,7 @@ export default function EntryDiv({
   NewEntryBtnTitle,
   NewEntryBtnDescription,
 }) {
-  const [isNeuEntryFormOpen, setIsNeuEntryFormOpen] = useState(false);
+  const [openEntryForm, setOpenEntryForm] = useState(null);
 
   return (
     <Box
@@ -59,12 +59,12 @@ export default function EntryDiv({
         type={type}
         NewEntryBtnTitle={NewEntryBtnTitle}
         NewEntryBtnDescription={NewEntryBtnDescription}
-        setIsNeuEntryFormOpen={setIsNeuEntryFormOpen}
+        setOpenEntryForm={setOpenEntryForm}
       />
-      {isNeuEntryFormOpen && (
+      {openEntryForm && (
         <NewEntryForm
           type={type}
-          setIsNeuEntryFormOpen={setIsNeuEntryFormOpen}
+          setOpenEntryForm={setOpenEntryForm}
           entryList={entryList}
           setEntryList={setEntryList}
         />

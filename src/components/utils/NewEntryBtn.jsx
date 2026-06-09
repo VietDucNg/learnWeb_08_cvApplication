@@ -8,10 +8,10 @@ export default function NewEntryBtn({
   type,
   NewEntryBtnTitle,
   NewEntryBtnDescription,
-  setIsNeuEntryFormOpen,
+  setOpenEntryForm,
 }) {
   function onClick() {
-    setIsNeuEntryFormOpen(true);
+    setOpenEntryForm(true);
   }
 
   return (

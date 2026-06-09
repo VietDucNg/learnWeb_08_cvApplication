@@ -59,7 +59,7 @@ const currentYear = dayjs();
 
 export default function NewEntryForm({
   type,
-  setIsNeuEntryFormOpen,
+  setOpenEntryForm,
   entryList,
   setEntryList,
 }) {
@@ -98,6 +98,7 @@ export default function NewEntryForm({
       setEntryList(newEntryList);
     }
     reset();
+    setOpenEntryForm(null);
   }
 
   return (
@@ -251,10 +252,7 @@ export default function NewEntryForm({
       >
         <ClearBtn onClick={reset} />
         <Stack direction={"row"} sx={{ gap: 1 }}>
-          <CancelBtn
-            reset={reset}
-            setIsNeuEntryFormOpen={setIsNeuEntryFormOpen}
-          />
+          <CancelBtn reset={reset} setOpenEntryForm={setOpenEntryForm} />
           <SaveBtn id={type} onSubmit={handleSubmit(onSubmit)} />
         </Stack>
       </Stack>

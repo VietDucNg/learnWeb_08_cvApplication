@@ -1,9 +1,9 @@
 import Button from "@mui/material/Button";
 
-export default function CancelBtn({ reset, setIsNeuEntryFormOpen }) {
+export default function CancelBtn({ reset, setOpenEntryForm }) {
   function onClick() {
     reset();
-    setIsNeuEntryFormOpen(false);
+    setOpenEntryForm(null);
   }
 
   return (
