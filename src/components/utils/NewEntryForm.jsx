@@ -62,6 +62,7 @@ export default function NewEntryForm({
   setOpenEntryForm,
   entryList,
   setEntryList,
+  itemToEdit,
 }) {
   const { register, handleSubmit, reset, control } = useForm();
 

@@ -54,6 +54,8 @@ export default function EntryDiv({
         type={type}
         entryList={entryList}
         setEntryList={setEntryList}
+        openEntryForm={openEntryForm}
+        setOpenEntryForm={setOpenEntryForm}
       />
       <NewEntryBtn
         type={type}
@@ -61,7 +63,7 @@ export default function EntryDiv({
         NewEntryBtnDescription={NewEntryBtnDescription}
         setOpenEntryForm={setOpenEntryForm}
       />
-      {openEntryForm && (
+      {openEntryForm == "new" && (
         <NewEntryForm
           type={type}
           setOpenEntryForm={setOpenEntryForm}

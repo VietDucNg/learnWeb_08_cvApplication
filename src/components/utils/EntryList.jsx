@@ -4,8 +4,15 @@ import { move } from "@dnd-kit/helpers";
 
 import EntryItem from "./EntryItem";
 import { Stack, Box } from "@mui/material";
+import NewEntryForm from "./NewEntryForm";
 
-export default function EntryList({ type, setEntryList, entryList }) {
+export default function EntryList({
+  type,
+  setEntryList,
+  entryList,
+  openEntryForm,
+  setOpenEntryForm,
+}) {
   function delItem(id) {
     const newEntryList = entryList.filter((item) => item.id !== id);
     setEntryList(newEntryList);
@@ -20,6 +27,7 @@ export default function EntryList({ type, setEntryList, entryList }) {
           item={item}
           delItem={delItem}
           handleRef={handleRef}
+          setOpenEntryForm={setOpenEntryForm}
         />
       </Box>
     );
@@ -32,9 +40,29 @@ export default function EntryList({ type, setEntryList, entryList }) {
   return (
     <Stack sx={{ gap: 1 }}>
       <DragDropProvider onDragOver={handleDragEnd}>
-        {entryList.map((item, index) => (
-          <Sortable key={item.id} item={item} index={index} delItem={delItem} />
-        ))}
+        {entryList.map((item, index) => {
+          if (openEntryForm && openEntryForm === item.id) {
+            return (
+              <NewEntryForm
+                key={item.id}
+                type={type}
+                setOpenEntryForm={setOpenEntryForm}
+                entryList={entryList}
+                setEntryList={setEntryList}
+                itemToEdit={item}
+              />
+            );
+          } else {
+            return (
+              <Sortable
+                key={item.id}
+                item={item}
+                index={index}
+                delItem={delItem}
+              />
+            );
+          }
+        })}
       </DragDropProvider>
     </Stack>
   );

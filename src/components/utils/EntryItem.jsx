@@ -5,7 +5,13 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 
-export default function EntryItem({ type, item, delItem, handleRef }) {
+export default function EntryItem({
+  type,
+  item,
+  delItem,
+  handleRef,
+  setOpenEntryForm,
+}) {
   const { id, degreeType, degree, uni, from, to, position, company } = item;
   const eduPrimary = `${degreeType} ${degreeType && degree && "in"} ${degree}`;
   const workPrimary = `${position}`;
@@ -13,7 +19,12 @@ export default function EntryItem({ type, item, delItem, handleRef }) {
 
   return (
     <ListItem
-      sx={{ backgroundColor: "background.paper", borderRadius: 1 }}
+      onClick={() => setOpenEntryForm(item.id)}
+      sx={{
+        backgroundColor: "background.paper",
+        borderRadius: 1,
+        ":hover": { cursor: "pointer" },
+      }}
       secondaryAction={
         <IconButton edge="end" aria-label="delete" onClick={() => delItem(id)}>
           <DeleteIcon />

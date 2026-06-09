@@ -11,7 +11,7 @@ export default function NewEntryBtn({
   setOpenEntryForm,
 }) {
   function onClick() {
-    setOpenEntryForm(true);
+    setOpenEntryForm("new");
   }
 
   return (
