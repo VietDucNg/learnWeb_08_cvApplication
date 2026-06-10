@@ -24,7 +24,7 @@ export default function NameFieldDiv({ errors, register }) {
   return (
     <Stack>
       <InputLabel sx={{ color: "text.primary", mb: 1 }} htmlFor="name-input">
-        Full Name
+        Full Name *
       </InputLabel>
       <TextField
         variant="outlined"

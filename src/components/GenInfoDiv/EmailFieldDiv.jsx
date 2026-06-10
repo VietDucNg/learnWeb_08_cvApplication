@@ -12,7 +12,7 @@ export default function EmailFieldDiv({ errors, register }) {
   return (
     <Box>
       <InputLabel sx={{ color: "text.primary", mb: 1 }} htmlFor="email-input">
-        Email Address
+        Email Address *
       </InputLabel>
       <TextField
         variant="outlined"
