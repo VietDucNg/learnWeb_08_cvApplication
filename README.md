@@ -17,6 +17,6 @@
 <li>Local Storage API</li>
 </ul>
 
-👉 <a href='https://vietducng.github.io/learnWeb_08_cvApplication/'>Live Demo</a>
+👉 <a href='https://cv-builder.vietducnguyen-fit.workers.dev/'>Live Demo</a>
 
 🚀 Develop by <a target='_blank' rel='noopener noreferrer' href='https://vietducng.github.io/'>Viet Nguyen</a>
