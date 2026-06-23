@@ -1,16 +1,22 @@
-# React + Vite
+<img src='public/favicon.svg'> <strong> CV Builder </strong>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p> A responsive-designed React application that allows users to create, edit, reorder, and preview a professional CV in real time. </p>
 
-Currently, two official plugins are available:
+<p> Users can manage personal information, education history, and work experience through intuitive forms while instantly seeing the results in a live CV preview. The project was built to strengthen my React fundamentals, including state management, component composition, form handling with React Hook Form, drag-and-drop interactions, local storage persistence, Material UI integration, and PDF export functionality.</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<strong> Built with: </strong>
 
-## React Compiler
+<ul>
+<li>React</li>
+<li>Vite</li>
+<li>Material UI</li>
+<li>React Hook Form</li>
+<li>Day.js</li>
+<li>DnD Kit</li>
+<li>Photon Geocoding API</li>
+<li>Local Storage API</li>
+</ul>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+👉 <a href='https://vietducng.github.io/learnWeb_08_cvApplication/'>Live Demo</a>
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🚀 Develop by <a target='_blank' rel='noopener noreferrer' href='https://vietducng.github.io/'>Viet Nguyen</a>
